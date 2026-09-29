@@ -1,0 +1,196 @@
+{
+  "project": {
+    "id": "fixture-v2-repair",
+    "title": "Human Realism Repair Routing",
+    "duration_seconds": 6,
+    "aspect_ratio": "9:16",
+    "frame_rate": 30,
+    "platform": "seedance-2.5",
+    "language": "zh",
+    "output_mode": "ONE_SHOT_PROMPT",
+    "status": "DRAFT"
+  },
+  "input": {
+    "input_type": "EXISTING_PROMPT",
+    "detected_task": "REWRITE",
+    "sources": [],
+    "raw_brief": "已有提示词被判定为走路像模特步，需定位到body biomechanics修复。"
+  },
+  "characters": [
+    {
+      "subject": "CHARACTER_A",
+      "subject_type": "CHARACTER",
+      "priority": 10,
+      "source_refs": [],
+      "fixed_attributes": ["同一张脸", "服装"],
+      "identity_lock": {
+        "character_id": "CHARACTER_A",
+        "age": "40岁",
+        "body_proportions": "180cm"
+      }
+    }
+  ],
+  "objective": {
+    "type": "BRAND_AD",
+    "intent": "修复模特步症状并重编译。",
+    "success_metrics": ["步态自然", "无台步词", "分数回到70以上"],
+    "platform_constraints": "竖屏"
+  },
+  "creative": {
+    "concept_name": "修复行走",
+    "structure": "6秒行走重编译",
+    "hook": {
+      "type": "ACTION_HOOK",
+      "description": "第一帧人物处于自然跨步中。",
+      "start": 0,
+      "duration": 6
+    },
+    "product_integration": "服装随行走自然摆动",
+    "visual_style": "纪实",
+    "ending": "人物走完自然收步"
+  },
+  "storyboard": [
+    {
+      "shot_id": "S01",
+      "start": 0,
+      "end": 6,
+      "duration_seconds": 6,
+      "first_frame_state": "人物正在自然行走，右腿跨步中",
+      "shot_size": "FULL",
+      "camera_position": "侧面",
+      "camera_movement": "SIDE TRACK",
+      "camera_speed": "慢速",
+      "depth_of_field": "medium",
+      "focus": "人物全身",
+      "subject_action": "自然步态行走，无台步",
+      "audio": {
+        "ambience": ["室外"],
+        "sfx": ["脚步"],
+        "voice": []
+      },
+      "transition": "NONE",
+      "feasibility": {
+        "action_load": "MEDIUM",
+        "camera_load": "MEDIUM",
+        "notes": "修复后动作负载不变",
+        "auto_split": false
+      }
+    }
+  ],
+  "camera": {
+    "default_shot_size": "FULL",
+    "default_movement": "SIDE TRACK",
+    "depth_of_field": "medium",
+    "focus": "人物全身",
+    "trajectory": "侧面同速",
+    "executability_rules": ["跟拍速度匹配步速"]
+  },
+  "lighting": {
+    "source": "自然光",
+    "direction": "右侧",
+    "intensity": "柔和",
+    "color_temperature": "5500K"
+  },
+  "sound": {
+    "ambience": ["室外"],
+    "sfx": ["脚步"],
+    "voice": [],
+    "dialogue": [],
+    "bgm": "NO BACKGROUND MUSIC"
+  },
+  "continuity": {
+    "character": "不换人",
+    "product": "服装一致",
+    "scene": "同一路径",
+    "action": "方向固定",
+    "camera": "同速跟拍"
+  },
+  "reference_analysis": {
+    "coverage": {"full_body": "LOW"},
+    "roles": {},
+    "notes": ["修复路由只局部重写动态，不改身份与台词"]
+  },
+  "human_realism": {
+    "enabled": true,
+    "character_present": true,
+    "character_ids": ["CHARACTER_A"],
+    "shot_distance_routing": {
+      "shot_size": "FULL",
+      "priority_modules": ["body_biomechanics", "clothing_dynamics", "hair_dynamics"],
+      "reduced_modules": ["face_pores", "micro_expression"]
+    },
+    "routing": {
+      "face_visible": false,
+      "body_movement": true,
+      "hand_interaction": false,
+      "hair_movement": true,
+      "clothing_movement": true,
+      "dialogue": false,
+      "multi_shot": false,
+      "modules": ["body_biomechanics", "clothing_dynamics", "hair_dynamics"]
+    },
+    "reference_coverage": {"full_body": "LOW"},
+    "identity": {
+      "character_id": "CHARACTER_A",
+      "lock_block": "CHARACTER_A身份不变。"
+    },
+    "body": {
+      "center_of_mass": true,
+      "weight_transfer": true,
+      "gait": true,
+      "heel_to_toe_motion": true,
+      "pelvic_movement": true,
+      "shoulder_counter_movement": true,
+      "arm_swing": true,
+      "head_stabilization": true,
+      "directives": ["修复：去掉台步", "脚跟先落地", "骨盆随步幅轻微跟随", "手臂自然摆动"]
+    },
+    "clothing": {
+      "fabric_inertia": true,
+      "gravity": true,
+      "motion_response": true,
+      "directives": ["衣摆延迟2-3帧"]
+    },
+    "temporal": {
+      "within_shot": true,
+      "body_drift": false
+    },
+    "anti_ai_rules": ["no runway stride", "no stiff knees", "no fabric floating"],
+    "score": {
+      "total": 68,
+      "identity": 16,
+      "eyes": 10,
+      "facial_dynamics": 10,
+      "skin": 7,
+      "hair": 8,
+      "body_biomechanics": 10,
+      "hands": 3,
+      "clothing": 4,
+      "temporal_consistency": 3,
+      "level": "AI ARTIFACT RISK"
+    }
+  },
+  "negative_constraints": ["no runway stride", "no stiff knees"],
+  "output_mode": "ONE_SHOT_PROMPT",
+  "qa": {
+    "status": "INCOMPLETE",
+    "checks": {
+      "SPEC": "PASS",
+      "CHARACTER": "PASS",
+      "HUMAN_REALISM": "WARNING",
+      "ACTION": "WEAK"
+    },
+    "missing_modules": ["body_biomechanics"],
+    "score": {
+      "clarity": 90,
+      "actionability": 82,
+      "continuity": 95,
+      "product_fidelity": 100,
+      "character_fidelity": 94,
+      "camera_executability": 95,
+      "audio_completeness": 90,
+      "temporal_coherence": 94
+    },
+    "notes": ["分数低于70，返回repair-routing后重编译"]
+  }
+}

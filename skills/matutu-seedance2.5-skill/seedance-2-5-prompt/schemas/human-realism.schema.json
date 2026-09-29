@@ -1,0 +1,279 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/matutu-ai/seedance2.5-skill/schemas/human-realism.schema.json",
+  "title": "Human Realism Engine",
+  "description": "Separates identity (who the person is) from realism (how a real human behaves), then compiles the minimum sufficient human dynamics for each shot.",
+  "type": "object",
+  "required": ["enabled", "character_present"],
+  "properties": {
+    "enabled": { "type": "boolean" },
+    "character_present": { "type": "boolean" },
+    "skip_reason": {
+      "type": "string",
+      "description": "Required when enabled=false so the skip is a decision, not a missing module."
+    },
+    "character_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Stable CHARACTER_A / CHARACTER_B ids reused across the whole sequence."
+    },
+    "shot_distance_routing": {
+      "type": "object",
+      "properties": {
+        "shot_size": { "type": "string" },
+        "priority_modules": { "type": "array", "items": { "type": "string" } },
+        "reduced_modules": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "routing": {
+      "type": "object",
+      "properties": {
+        "face_visible": { "type": "boolean" },
+        "body_movement": { "type": "boolean" },
+        "hand_interaction": { "type": "boolean" },
+        "hair_movement": { "type": "boolean" },
+        "clothing_movement": { "type": "boolean" },
+        "dialogue": { "type": "boolean" },
+        "multi_shot": { "type": "boolean" },
+        "modules": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Minimum sufficient module list, for example face_dynamics, eye_dynamics, breathing."
+        }
+      },
+      "additionalProperties": true
+    },
+    "reference_coverage": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "enum": ["HIGH", "MEDIUM", "LOW", "MISSING", "N/A"]
+      }
+    },
+    "identity": {
+      "type": "object",
+      "description": "Identity answers who the person is and never changes between shots.",
+      "properties": {
+        "character_id": { "type": "string" },
+        "face_structure": { "type": "boolean" },
+        "facial_proportions": { "type": "boolean" },
+        "natural_asymmetry": { "type": "boolean" },
+        "eye_shape": { "type": "boolean" },
+        "eyebrow_shape": { "type": "boolean" },
+        "nose_shape": { "type": "boolean" },
+        "lip_shape": { "type": "boolean" },
+        "jawline": { "type": "boolean" },
+        "cheekbone_structure": { "type": "boolean" },
+        "skin_tone": { "type": "boolean" },
+        "age": { "type": "boolean" },
+        "hair_style": { "type": "boolean" },
+        "hair_color": { "type": "boolean" },
+        "body_proportions": { "type": "boolean" },
+        "signature_features": { "type": "array", "items": { "type": "string" } },
+        "lock_block": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "facial_dynamics": {
+      "type": "object",
+      "properties": {
+        "micro_expression": { "type": "boolean" },
+        "blinking": { "type": "boolean" },
+        "eye_movement": { "type": "boolean" },
+        "eyelid_deformation": { "type": "boolean" },
+        "jaw_movement": { "type": "boolean" },
+        "lip_deformation": { "type": "boolean" },
+        "cheek_movement": { "type": "boolean" },
+        "brow_movement": { "type": "boolean" },
+        "forehead_movement": { "type": "boolean" },
+        "nostril_movement": { "type": "boolean" },
+        "breathing": { "type": "boolean" },
+        "expression_transition": { "type": "boolean" },
+        "directives": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "skin": {
+      "type": "object",
+      "properties": {
+        "micro_texture": { "type": "boolean" },
+        "natural_tone_variation": { "type": "boolean" },
+        "skin_deformation": { "type": "boolean" },
+        "natural_specular_response": { "type": "boolean" },
+        "directives": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "hair": {
+      "type": "object",
+      "properties": {
+        "individual_strands": { "type": "boolean" },
+        "flyaway_hair": { "type": "boolean" },
+        "baby_hair": { "type": "boolean" },
+        "inertia": { "type": "boolean" },
+        "gravity": { "type": "boolean" },
+        "delayed_response": { "type": "boolean" },
+        "collision": { "type": "boolean" },
+        "directives": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "body": {
+      "type": "object",
+      "properties": {
+        "center_of_mass": { "type": "boolean" },
+        "weight_transfer": { "type": "boolean" },
+        "foot_placement": { "type": "boolean" },
+        "gait": { "type": "boolean" },
+        "heel_to_toe_motion": { "type": "boolean" },
+        "pelvic_movement": { "type": "boolean" },
+        "shoulder_counter_movement": { "type": "boolean" },
+        "arm_swing": { "type": "boolean" },
+        "head_stabilization": { "type": "boolean" },
+        "posture_adjustment": { "type": "boolean" },
+        "inertia": { "type": "boolean" },
+        "directives": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "hands": {
+      "type": "object",
+      "properties": {
+        "finger_independence": { "type": "boolean" },
+        "finger_flexion": { "type": "boolean" },
+        "thumb_opposition": { "type": "boolean" },
+        "wrist_rotation": { "type": "boolean" },
+        "knuckle_deformation": { "type": "boolean" },
+        "grip": { "type": "boolean" },
+        "grip_pressure": { "type": "boolean" },
+        "object_contact": { "type": "boolean" },
+        "finger_object_collision": { "type": "boolean" },
+        "directives": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "clothing": {
+      "type": "object",
+      "properties": {
+        "fabric_inertia": { "type": "boolean" },
+        "gravity": { "type": "boolean" },
+        "compression": { "type": "boolean" },
+        "stretch": { "type": "boolean" },
+        "fold_response": { "type": "boolean" },
+        "body_contact": { "type": "boolean" },
+        "motion_response": { "type": "boolean" },
+        "directives": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "camera": {
+      "type": "object",
+      "properties": {
+        "capture_language": {
+          "type": "string",
+          "enum": ["TRIPOD", "HANDHELD", "PHONE", "DOCUMENTARY", "COMMERCIAL", "CINEMATIC"]
+        },
+        "focus_behavior": { "type": "boolean" },
+        "exposure_response": { "type": "boolean" },
+        "motion_behavior": { "type": "boolean" },
+        "depth_response": { "type": "boolean" },
+        "motion_blur": { "type": "boolean" },
+        "directives": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "environment": {
+      "type": "object",
+      "properties": {
+        "ambient_movement": { "type": "boolean" },
+        "wind_response": { "type": "boolean" },
+        "reflections": { "type": "boolean" },
+        "shadows": { "type": "boolean" },
+        "light_response": { "type": "boolean" },
+        "directives": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "temporal": {
+      "type": "object",
+      "properties": {
+        "within_shot": { "type": "boolean" },
+        "cross_shot": { "type": "boolean" },
+        "sequence_state": { "type": "boolean" },
+        "identity_drift": { "type": "boolean", "default": false },
+        "facial_morphing": { "type": "boolean", "default": false },
+        "texture_flicker": { "type": "boolean", "default": false },
+        "hair_flicker": { "type": "boolean", "default": false },
+        "body_drift": { "type": "boolean", "default": false },
+        "expression_reset": { "type": "boolean", "default": false },
+        "directives": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "interaction_lock": {
+      "type": "object",
+      "description": "Multi-character topology: relative position, gaze, distance, body orientation, hand interaction and object ownership.",
+      "properties": {
+        "relative_position": { "type": "string" },
+        "gaze": { "type": "string" },
+        "distance": { "type": "string" },
+        "body_orientation": { "type": "string" },
+        "hand_interaction": { "type": "string" },
+        "object_ownership": { "type": "string" },
+        "forbidden": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "dialogue": {
+      "type": "object",
+      "properties": {
+        "speaking_character": { "type": "string" },
+        "text_locked": { "type": "boolean" },
+        "dynamics": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": true
+    },
+    "anti_ai_rules": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Only high-value, diagnosable negative constraints."
+    },
+    "negative_constraints": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "score": {
+      "type": "object",
+      "description": "Pre-generation risk score. Never presented as an actual video quality score.",
+      "properties": {
+        "total": { "type": "number", "minimum": 0, "maximum": 100 },
+        "identity": { "type": "number", "minimum": 0, "maximum": 20 },
+        "eyes": { "type": "number", "minimum": 0, "maximum": 15 },
+        "facial_dynamics": { "type": "number", "minimum": 0, "maximum": 15 },
+        "skin": { "type": "number", "minimum": 0, "maximum": 10 },
+        "hair": { "type": "number", "minimum": 0, "maximum": 10 },
+        "body_biomechanics": { "type": "number", "minimum": 0, "maximum": 15 },
+        "hands": { "type": "number", "minimum": 0, "maximum": 5 },
+        "clothing": { "type": "number", "minimum": 0, "maximum": 5 },
+        "temporal_consistency": { "type": "number", "minimum": 0, "maximum": 5 },
+        "level": {
+          "type": "string",
+          "enum": [
+            "CINEMA REALISM",
+            "COMMERCIAL REALISM",
+            "ACCEPTABLE",
+            "AI ARTIFACT RISK",
+            "REGENERATE",
+            "SKIPPED"
+          ]
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

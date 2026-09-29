@@ -1,0 +1,4 @@
+interface:
+  display_name: "Seedance 2.5 Commercial Video Director + Reference Intelligence Engine + Human Realism Engine + Prompt Compiler"
+  short_description: "把产品图/资料/分镜/参考视频/已有Prompt导演化，先按Reference Role提取证据、定优先级并产出REFERENCE SPEC，再分层锁定人物身份与Human Realism并编译为可投喂Seedance提示词"
+  default_prompt: "Use $seedance-2-5-prompt 把下面的素材/脚本编译成可直接投喂 Seedance 2.5 的提示词，并给出 QA。"

@@ -1,0 +1,198 @@
+{
+  "project": {
+    "id": "fixture-v3-reference-scene",
+    "title": "Reference Scene Lock",
+    "duration_seconds": 8,
+    "aspect_ratio": "9:16",
+    "frame_rate": 30,
+    "platform": "seedance-2.5",
+    "language": "zh",
+    "output_mode": "ONE_SHOT_PROMPT",
+    "status": "DRAFT"
+  },
+  "input": {
+    "input_type": "SCENE_IMAGE",
+    "detected_task": "GENERATE",
+    "sources": [
+      {
+        "asset_id": "@图片3",
+        "kind": "SCENE_IMAGE",
+        "role": "SCENE",
+        "inherit": ["architecture", "layout", "materials", "atmosphere"],
+        "do_not_inherit": ["人", "桌椅上的杂物"]
+      }
+    ],
+    "raw_brief": "参考图锁定街角花店橱窗与旧砖墙空间，画面内不出现人物。"
+  },
+  "objective": {
+    "type": "PRODUCT_SHOWCASE",
+    "intent": "用同一空间完成环境展示，强调橱窗与旧砖材质。",
+    "success_metrics": ["空间关系稳定", "橱窗不漂移", "无人物"],
+    "platform_constraints": "竖屏，无字幕"
+  },
+  "creative": {
+    "concept_name": "街角花店",
+    "structure": "8秒从门头缓慢推近到橱窗",
+    "hook": {
+      "type": "VISUAL_HOOK",
+      "description": "第一帧画面已停在花店门头前。",
+      "start": 0,
+      "duration": 8
+    },
+    "product_integration": "无产品，纯场景氛围",
+    "visual_style": "城市纪实",
+    "ending": "镜头停在橱窗内花束细节"
+  },
+  "scene": {
+    "location": "街角花店",
+    "layout": "门头居左，橱窗居右",
+    "time_of_day": "下午",
+    "lighting": "窗光混合日光",
+    "space_lock": "门头与橱窗相对位置固定"
+  },
+  "reference_intelligence": {
+    "version": "V3",
+    "reference_summary": "场景图承担 SCENE 职责，只锁定空间、材质与光线氛围。",
+    "references": [
+      {
+        "reference_id": "@图片3",
+        "asset_kind": "IMAGE",
+        "role": "SCENE",
+        "secondary_roles": ["ARCHITECTURE", "ENVIRONMENT", "LIGHTING"],
+        "priority": 70,
+        "confidence": 0.9,
+        "lock_level": "HARD_LOCK",
+        "coverage": {
+          "ARCHITECTURE": "HIGH",
+          "ENVIRONMENT": "HIGH",
+          "LIGHTING": "MEDIUM",
+          "CHARACTER": "N/A"
+        },
+        "subject": {
+          "subject_type": "SCENE",
+          "subject_label": "SCENE_01",
+          "count": 1
+        }
+      }
+    ],
+    "derived_locks": {
+      "scene_lock": {
+        "location": "街角花店",
+        "architecture": "低层旧砖房，深绿门框与玻璃橱窗",
+        "environment": "临街人行道，窗台摆绿色植物",
+        "objects": ["深绿门头", "玻璃橱窗", "木质花架"],
+        "materials": ["旧红砖", "深绿烤漆木", "玻璃"],
+        "depth": "门头近景、橱窗中景、街景远景",
+        "foreground": "窗台绿植",
+        "midground": "橱窗花束与木质花架",
+        "background": "模糊街景",
+        "lighting": "下午窗光混合日光",
+        "atmosphere": "安静松弛",
+        "color_palette": "旧红砖、深绿、米白"
+      }
+    },
+    "rif_blocks": [
+      {
+        "block": "场景锁",
+        "role": "SCENE",
+        "source_refs": ["@图片3"],
+        "content": "旧砖门头与橱窗保持同一空间关系",
+        "lock": "HARD_LOCK",
+        "constraints": ["不出现人物", "不改门头颜色"]
+      }
+    ],
+    "conflicts": [],
+    "reference_qa": {
+      "status": "PASS",
+      "checks": {
+        "role_accuracy": "PASS",
+        "feature_extraction": "PASS",
+        "conflict_resolution": "NO_CONFLICT",
+        "lock_completeness": "PASS"
+      }
+    },
+    "reference_score": {
+      "role_accuracy": 20,
+      "feature_extraction": 20,
+      "priority_accuracy": 15,
+      "conflict_resolution": 15,
+      "lock_completeness": 15,
+      "prompt_mapping": 15,
+      "total": 100
+    }
+  },
+  "human_realism": {
+    "enabled": false,
+    "character_present": false,
+    "skip_reason": "NO_CHARACTER"
+  },
+  "storyboard": [
+    {
+      "shot_id": "S01",
+      "start": 0,
+      "end": 8,
+      "duration_seconds": 8,
+      "first_frame_state": "镜头停在花店门头正面",
+      "shot_size": "MEDIUM",
+      "camera_position": "街对面平视",
+      "camera_movement": "DOLLY_IN",
+      "camera_speed": "极慢",
+      "depth_of_field": "deep",
+      "focus": "门头与橱窗",
+      "subject_action": "镜头缓慢推近至橱窗花束细节后停住",
+      "audio": {
+        "ambience": ["街道环境声"],
+        "sfx": [],
+        "voice": []
+      },
+      "transition": "NONE",
+      "feasibility": {
+        "action_load": "LOW",
+        "camera_load": "LOW",
+        "notes": "无人物场景，只做推近",
+        "auto_split": false
+      }
+    }
+  ],
+  "camera": {
+    "default_shot_size": "MEDIUM",
+    "default_movement": "DOLLY_IN",
+    "depth_of_field": "deep",
+    "focus": "门头与橱窗"
+  },
+  "lighting": {
+    "source": "下午日光",
+    "direction": "画面右后",
+    "intensity": "中等",
+    "color_temperature": "5000K",
+    "contrast": "中"
+  },
+  "sound": {
+    "ambience": ["街道环境声"],
+    "sfx": [],
+    "voice": [],
+    "dialogue": [],
+    "bgm": "NO BACKGROUND MUSIC"
+  },
+  "continuity": {
+    "character": "N/A",
+    "product": "N/A",
+    "scene": "同一街角花店",
+    "action": "推近方向单一",
+    "camera": "极慢推近"
+  },
+  "negative_constraints": ["no person", "no sign text change", "no architecture morph"],
+  "output_mode": "ONE_SHOT_PROMPT",
+  "qa": {
+    "status": "READY",
+    "checks": {
+      "SPEC": "PASS",
+      "SCENE": "PASS",
+      "REFERENCE": "PASS",
+      "CHARACTER": "SKIP",
+      "HUMAN_REALISM": "SKIP"
+    },
+    "missing_modules": [],
+    "notes": ["Reference Scene fixture 覆盖纯场景锁与NO_CHARACTER路径"]
+  }
+}

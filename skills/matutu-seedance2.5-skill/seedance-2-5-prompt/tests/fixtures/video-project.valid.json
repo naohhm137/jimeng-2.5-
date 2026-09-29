@@ -1,0 +1,345 @@
+{
+  "project": {
+    "id": "fixture-001-shaker",
+    "title": "运动摇摇杯多视角产品视频",
+    "duration_seconds": 10,
+    "aspect_ratio": "9:16",
+    "frame_rate": 30,
+    "platform": "seedance-2.5",
+    "language": "zh",
+    "output_mode": "ONE_SHOT_PROMPT",
+    "status": "DRAFT"
+  },
+  "input": {
+    "input_type": "PRODUCT_DATA",
+    "detected_task": "GENERATE",
+    "sources": [
+      {
+        "asset_id": "@图片1",
+        "kind": "PRODUCT_IMAGE",
+        "role": "PRODUCT_APPEARANCE",
+        "inherit": [
+          "shape",
+          "color",
+          "material",
+          "logo position",
+          "scale lines"
+        ],
+        "do_not_inherit": [
+          "background",
+          "lighting",
+          "text",
+          "watermark"
+        ]
+      }
+    ],
+    "raw_brief": "运动摇摇杯，10秒，竖屏，多视角展示密封防漏、刻度、搅拌球与提环；不出现清晰人脸。"
+  },
+  "product": {
+    "name": "运动摇摇杯",
+    "category": "运动水具",
+    "appearance": "圆柱杯身，透明刻度，可拆卸搅拌球",
+    "colors": [
+      "深蓝",
+      "透明"
+    ],
+    "materials": [
+      "Tritan杯身",
+      "硅胶密封圈",
+      "PP杯盖"
+    ],
+    "structure": "杯盖、密封圈、杯身、刻度、提环、搅拌球",
+    "logo": "正面小面积品牌Logo",
+    "accessories": [
+      "搅拌球",
+      "提环"
+    ],
+    "functions": [
+      "密封防漏",
+      "刻度提示",
+      "便携提环"
+    ],
+    "usage": "装入液体后盖紧，摇匀即可饮用",
+    "key_selling_points": [
+      "密封防漏",
+      "杯身刻度",
+      "搅拌球",
+      "便携提环"
+    ],
+    "immutable_elements": [
+      "杯身形状",
+      "比例",
+      "颜色",
+      "材质",
+      "刻度",
+      "Logo",
+      "提环",
+      "搅拌球数量"
+    ],
+    "transformation_allowed": false,
+    "lock": {
+      "subject": "运动摇摇杯",
+      "subject_type": "PRODUCT",
+      "priority": 10,
+      "source_refs": [
+        "@图片1"
+      ],
+      "fixed_attributes": [
+        "shape unchanged",
+        "proportions unchanged",
+        "material unchanged",
+        "color unchanged",
+        "scale lines unchanged",
+        "logo unchanged",
+        "accessory count unchanged"
+      ],
+      "allowed_changes": [],
+      "forbidden_changes": [
+        "product redesign",
+        "missing stir ball",
+        "extra cup",
+        "logo relocation"
+      ]
+    }
+  },
+  "objective": {
+    "type": "PRODUCT_SHOWCASE",
+    "intent": "用密封钩子抓住注意力，再以多视角展示杯身细节与便携使用，最后落在产品定格。",
+    "success_metrics": [
+      "前3秒完成密封防漏钩子",
+      "多视角来自同一产品",
+      "无清晰人脸"
+    ],
+    "platform_constraints": "TikTok竖屏，10秒，无字幕，无BGM"
+  },
+  "creative": {
+    "concept_name": "密封倒扣不漏",
+    "structure": "0-2钩子 → 2-5多视角 → 5-8手部使用 → 8-10收束",
+    "hook": {
+      "type": "PRODUCT_HOOK",
+      "description": "第一帧已是杯身倒扣并快速翻转的动作中间帧，液体不外漏，0.7秒内杯盖密封特写。",
+      "start": 0,
+      "duration": 2,
+      "relation_to_selling_point": "直接展示密封防漏卖点"
+    },
+    "product_integration": "产品自身动作承担钩子、展示与收束，不依赖无关场景。",
+    "visual_style": "简洁运动背景，浅景深产品特写",
+    "ending": "摇摇杯立在桌面中央，画面固定约1秒自然收尾"
+  },
+  "storyboard": [
+    {
+      "shot_id": "S01",
+      "start": 0,
+      "end": 2,
+      "duration_seconds": 2,
+      "first_frame_state": "摇摇杯被倒扣并快速翻转，液体不外漏",
+      "shot_size": "CLOSE_UP",
+      "camera_position": "正面桌面高度",
+      "camera_movement": "STATIC",
+      "camera_speed": "无",
+      "depth_of_field": "shallow",
+      "focus": "杯盖密封圈",
+      "subject_action": "杯盖在0.7秒内完成密封特写",
+      "product_action": "倒扣翻转一次",
+      "audio": {
+        "ambience": [
+          "室内低频环境音"
+        ],
+        "sfx": [
+          "杯盖咔嗒",
+          "轻微水流"
+        ],
+        "voice": []
+      },
+      "transition": "CUT",
+      "feasibility": {
+        "action_load": "LOW",
+        "camera_load": "LOW",
+        "notes": "单动作单运镜",
+        "auto_split": false
+      }
+    },
+    {
+      "shot_id": "S02",
+      "start": 2,
+      "end": 5,
+      "duration_seconds": 3,
+      "first_frame_state": "摇摇杯位于画面中央",
+      "shot_size": "MEDIUM_CLOSE_UP",
+      "camera_position": "多机位分镜：front/side/top",
+      "camera_movement": "STATIC",
+      "camera_speed": "无",
+      "depth_of_field": "shallow",
+      "focus": "杯身刻度",
+      "subject_action": "展示刻度、提环与搅拌球",
+      "product_action": "杯身原地多视角展示",
+      "audio": {
+        "ambience": [
+          "室内低频环境音"
+        ],
+        "sfx": [
+          "轻微放置声"
+        ],
+        "voice": []
+      },
+      "transition": "CUT",
+      "feasibility": {
+        "action_load": "LOW",
+        "camera_load": "LOW",
+        "notes": "三视角由三个独立镜头承担",
+        "auto_split": false
+      }
+    },
+    {
+      "shot_id": "S03",
+      "start": 5,
+      "end": 8,
+      "duration_seconds": 3,
+      "first_frame_state": "一双手位于画面一侧，摇摇杯已开盖",
+      "shot_size": "CLOSE_UP",
+      "camera_position": "手部操作正面",
+      "camera_movement": "STATIC",
+      "camera_speed": "无",
+      "depth_of_field": "shallow",
+      "focus": "杯盖与搅拌球",
+      "subject_action": "手部旋开杯盖、放入搅拌球、倒水、盖回，一次只做一个动作",
+      "product_action": "开盖、放入搅拌球、盖回",
+      "audio": {
+        "ambience": [
+          "室内低频环境音"
+        ],
+        "sfx": [
+          "液体声",
+          "杯盖声"
+        ],
+        "voice": []
+      },
+      "transition": "CUT",
+      "feasibility": {
+        "action_load": "MEDIUM",
+        "camera_load": "LOW",
+        "notes": "每个产品动作单独成短镜，不在同镜堆叠",
+        "auto_split": false
+      }
+    },
+    {
+      "shot_id": "S04",
+      "start": 8,
+      "end": 10,
+      "duration_seconds": 2,
+      "first_frame_state": "摇摇杯立在桌面中央",
+      "shot_size": "MEDIUM",
+      "camera_position": "正面",
+      "camera_movement": "STATIC",
+      "camera_speed": "无",
+      "depth_of_field": "medium",
+      "focus": "整杯",
+      "subject_action": "产品定格",
+      "product_action": "保持直立",
+      "audio": {
+        "ambience": [
+          "室内环境音渐弱"
+        ],
+        "sfx": [],
+        "voice": []
+      },
+      "transition": "NONE",
+      "feasibility": {
+        "action_load": "LOW",
+        "camera_load": "LOW",
+        "notes": "结尾定格",
+        "auto_split": false
+      }
+    }
+  ],
+  "camera": {
+    "default_shot_size": "CLOSE_UP",
+    "default_movement": "STATIC",
+    "depth_of_field": "shallow",
+    "focus": "产品主体",
+    "trajectory": "每个视角单一主运镜",
+    "executability_rules": [
+      "一个镜头只保留一个主运镜",
+      "多视角镜头单独成镜，不用360度旋转硬塞"
+    ]
+  },
+  "lighting": {
+    "source": "柔和顶光加侧光",
+    "direction": "顶部偏左",
+    "intensity": "中等",
+    "color_temperature": "5600K",
+    "contrast": "低对比",
+    "shadows": "真实柔和阴影",
+    "ambient": "室内均匀光",
+    "progression": [
+      "全片光线一致"
+    ]
+  },
+  "sound": {
+    "ambience": [
+      "室内低频环境音"
+    ],
+    "sfx": [
+      "杯盖咔嗒",
+      "水流",
+      "放置声"
+    ],
+    "voice": [],
+    "dialogue": [],
+    "bgm": "NO BACKGROUND MUSIC"
+  },
+  "continuity": {
+    "character": "无清晰人脸，只出现同一双手",
+    "product": "刻度、提环、搅拌球数量一致；杯盖状态按步骤变化",
+    "scene": "同一简洁运动背景",
+    "action": "左右方向不错误镜像",
+    "camera": "不反转景别方向",
+    "forbidden_changes": [
+      "产品变色",
+      "产品消失",
+      "产品复制",
+      "穿模"
+    ]
+  },
+  "negative_constraints": [
+    "no clear face",
+    "no product redesign",
+    "no product duplication",
+    "no mirror error",
+    "no subtitles",
+    "no watermark",
+    "no UI"
+  ],
+  "output_mode": "ONE_SHOT_PROMPT",
+  "qa": {
+    "status": "READY",
+    "checks": {
+      "SPEC": "PASS",
+      "PRODUCT": "PASS",
+      "CHARACTER": "PASS",
+      "SCENE": "PASS",
+      "ACTION": "PASS",
+      "CAMERA": "PASS",
+      "LIGHTING": "PASS",
+      "SOUND": "PASS",
+      "DIALOGUE": "N/A",
+      "CONTINUITY": "PASS",
+      "NEGATIVE": "PASS",
+      "ENDING": "PASS"
+    },
+    "missing_modules": [],
+    "score": {
+      "clarity": 98,
+      "actionability": 95,
+      "continuity": 98,
+      "product_fidelity": 98,
+      "character_fidelity": 100,
+      "camera_executability": 95,
+      "audio_completeness": 95,
+      "temporal_coherence": 98
+    },
+    "notes": [
+      "fixture通过全部结构化QA检查"
+    ]
+  }
+}

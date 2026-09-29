@@ -1,0 +1,147 @@
+{
+  "project": {
+    "id": "fixture-v2-no-character",
+    "title": "Human Realism No Character",
+    "duration_seconds": 10,
+    "aspect_ratio": "9:16",
+    "frame_rate": 30,
+    "platform": "seedance-2.5",
+    "language": "zh",
+    "output_mode": "ONE_SHOT_PROMPT",
+    "status": "DRAFT"
+  },
+  "input": {
+    "input_type": "PRODUCT_DATA",
+    "detected_task": "GENERATE",
+    "sources": [
+      {
+        "asset_id": "@图片1",
+        "kind": "PRODUCT_IMAGE",
+        "role": "PRODUCT_APPEARANCE",
+        "inherit": ["shape", "color", "material"],
+        "do_not_inherit": ["background", "lighting"]
+      }
+    ],
+    "raw_brief": "纯产品packshot，画面不出现人物与手。"
+  },
+  "product": {
+    "name": "皮革斜挎包",
+    "category": "箱包",
+    "appearance": "焦糖色头层牛皮",
+    "materials": ["牛皮"],
+    "structure": "翻盖、磁扣、肩带",
+    "immutable_elements": ["包型", "颜色", "缝线", "肩带"],
+    "transformation_allowed": false
+  },
+  "objective": {
+    "type": "PRODUCT_SHOWCASE",
+    "intent": "纯产品定格展示。",
+    "success_metrics": ["无人物", "产品细节清楚"],
+    "platform_constraints": "竖屏，无字幕"
+  },
+  "creative": {
+    "concept_name": "产品静止",
+    "structure": "10秒产品转盘展示",
+    "hook": {
+      "type": "PRODUCT_HOOK",
+      "description": "第一帧包已立在桌面并处于缓慢转动的动作中。",
+      "start": 0,
+      "duration": 10
+    },
+    "product_integration": "产品自身承担全部画面",
+    "visual_style": "商业静物",
+    "ending": "包正面朝镜头停住"
+  },
+  "storyboard": [
+    {
+      "shot_id": "S01",
+      "start": 0,
+      "end": 10,
+      "duration_seconds": 10,
+      "first_frame_state": "包立于桌面上，缓慢向左旋转已经进行到侧面",
+      "shot_size": "MEDIUM",
+      "camera_position": "正面桌面高度",
+      "camera_movement": "STATIC",
+      "camera_speed": "无",
+      "depth_of_field": "medium",
+      "focus": "包身",
+      "subject_action": "包转至正面后停住1秒",
+      "audio": {
+        "ambience": ["室内低频"],
+        "sfx": [],
+        "voice": []
+      },
+      "transition": "NONE",
+      "feasibility": {
+        "action_load": "LOW",
+        "camera_load": "LOW",
+        "notes": "无人物",
+        "auto_split": false
+      }
+    }
+  ],
+  "camera": {
+    "default_shot_size": "MEDIUM",
+    "default_movement": "STATIC",
+    "depth_of_field": "medium",
+    "focus": "包身",
+    "trajectory": "固定",
+    "executability_rules": ["无人物出现"]
+  },
+  "lighting": {
+    "source": "柔光箱",
+    "direction": "顶部偏左",
+    "intensity": "中等",
+    "color_temperature": "5600K",
+    "contrast": "低"
+  },
+  "sound": {
+    "ambience": ["室内低频"],
+    "sfx": [],
+    "voice": [],
+    "dialogue": [],
+    "bgm": "NO BACKGROUND MUSIC"
+  },
+  "continuity": {
+    "character": "N/A",
+    "product": "同一只包",
+    "scene": "同一桌面",
+    "action": "转动方向不跳变",
+    "camera": "固定"
+  },
+  "reference_analysis": {
+    "coverage": {"product": "HIGH"},
+    "roles": {"@图片1": "PRODUCT_APPEARANCE"},
+    "notes": ["纯产品项目，无人物"]
+  },
+  "human_realism": {
+    "enabled": false,
+    "character_present": false,
+    "skip_reason": "NO_CHARACTER"
+  },
+  "negative_constraints": ["no person", "no hand", "no extra bag", "no product distortion"],
+  "output_mode": "ONE_SHOT_PROMPT",
+  "qa": {
+    "status": "READY",
+    "checks": {
+      "SPEC": "PASS",
+      "PRODUCT": "PASS",
+      "CHARACTER": "SKIP",
+      "HUMAN_REALISM": "SKIP",
+      "DIALOGUE": "N/A",
+      "CONTINUITY": "PASS"
+    },
+    "missing_modules": [],
+    "score": {
+      "clarity": 97,
+      "actionability": 97,
+      "continuity": 98,
+      "product_fidelity": 98,
+      "character_fidelity": 100,
+      "camera_executability": 96,
+      "audio_completeness": 90,
+      "temporal_coherence": 98
+    },
+    "notes": ["无人物，Human Realism显式SKIP，不生成人物真实感段落"]
+  }
+}

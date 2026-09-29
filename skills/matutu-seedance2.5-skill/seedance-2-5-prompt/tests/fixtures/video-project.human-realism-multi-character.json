@@ -1,0 +1,211 @@
+{
+  "project": {
+    "id": "fixture-v2-multi-character",
+    "title": "Human Realism Multi Character",
+    "duration_seconds": 10,
+    "aspect_ratio": "9:16",
+    "frame_rate": 30,
+    "platform": "seedance-2.5",
+    "language": "zh",
+    "output_mode": "ONE_SHOT_PROMPT",
+    "status": "DRAFT"
+  },
+  "input": {
+    "input_type": "AD_BRIEF",
+    "detected_task": "GENERATE",
+    "sources": [],
+    "raw_brief": "两人在门廊交谈，一人递茶杯给另一人。"
+  },
+  "characters": [
+    {
+      "subject": "CHARACTER_A",
+      "subject_type": "CHARACTER",
+      "priority": 10,
+      "source_refs": [],
+      "fixed_attributes": ["同一张脸", "服装"],
+      "identity_lock": {
+        "character_id": "CHARACTER_A",
+        "age": "45岁",
+        "hair_color": "银灰",
+        "body_proportions": "180cm"
+      }
+    },
+    {
+      "subject": "CHARACTER_B",
+      "subject_type": "CHARACTER",
+      "priority": 10,
+      "source_refs": [],
+      "fixed_attributes": ["同一张脸", "服装"],
+      "identity_lock": {
+        "character_id": "CHARACTER_B",
+        "age": "35岁",
+        "hair_color": "深棕",
+        "body_proportions": "172cm"
+      }
+    }
+  ],
+  "objective": {
+    "type": "STORY_AD",
+    "intent": "建立两人的空间拓扑与自然互动。",
+    "success_metrics": ["不换人", "不face merge", "递杯接触链完整"],
+    "platform_constraints": "竖屏"
+  },
+  "creative": {
+    "concept_name": "门廊递茶",
+    "structure": "10秒二人交谈与递杯",
+    "hook": {
+      "type": "ACTION_HOOK",
+      "description": "第一帧B已经伸手接向A递来的茶杯。",
+      "start": 0,
+      "duration": 10
+    },
+    "product_integration": "茶杯作为唯一交接物",
+    "visual_style": "克制群像",
+    "ending": "B握住茶杯，A收回手"
+  },
+  "storyboard": [
+    {
+      "shot_id": "S01",
+      "start": 0,
+      "end": 10,
+      "duration_seconds": 10,
+      "first_frame_state": "A在画面左侧递出茶杯，B在右侧伸手接近杯把",
+      "shot_size": "MEDIUM",
+      "camera_position": "正面偏侧",
+      "camera_movement": "STATIC",
+      "camera_speed": "无",
+      "depth_of_field": "medium",
+      "focus": "茶杯",
+      "subject_action": "B接过茶杯，A松手后各自恢复自然站姿",
+      "audio": {
+        "ambience": ["门廊风"],
+        "sfx": ["陶瓷轻碰"],
+        "voice": []
+      },
+      "transition": "NONE",
+      "feasibility": {
+        "action_load": "MEDIUM",
+        "camera_load": "LOW",
+        "notes": "只有一次递杯接触",
+        "auto_split": false
+      }
+    }
+  ],
+  "camera": {
+    "default_shot_size": "MEDIUM",
+    "default_movement": "STATIC",
+    "depth_of_field": "medium",
+    "focus": "茶杯",
+    "trajectory": "固定",
+    "executability_rules": ["两人始终同框", "不切反打"]
+  },
+  "lighting": {
+    "source": "门廊侧光",
+    "direction": "画面右侧",
+    "intensity": "柔和",
+    "color_temperature": "5500K"
+  },
+  "sound": {
+    "ambience": ["门廊风"],
+    "sfx": ["陶瓷轻碰"],
+    "voice": [],
+    "dialogue": [],
+    "bgm": "NO BACKGROUND MUSIC"
+  },
+  "continuity": {
+    "character": "A/B各自独立身份不互换",
+    "product": "一只茶杯",
+    "scene": "同一门廊",
+    "action": "递杯只发生一次",
+    "camera": "固定"
+  },
+  "reference_analysis": {
+    "coverage": {"character_a_face": "MISSING", "character_b_face": "MISSING"},
+    "roles": {},
+    "notes": ["无参考时不假装已锁脸"]
+  },
+  "human_realism": {
+    "enabled": true,
+    "character_present": true,
+    "character_ids": ["CHARACTER_A", "CHARACTER_B"],
+    "shot_distance_routing": {
+      "shot_size": "MEDIUM",
+      "priority_modules": ["face", "body", "hands", "clothing", "interaction_lock"],
+      "reduced_modules": ["skin_pores", "nostril"]
+    },
+    "routing": {
+      "face_visible": true,
+      "body_movement": true,
+      "hand_interaction": true,
+      "hair_movement": true,
+      "clothing_movement": true,
+      "dialogue": false,
+      "multi_shot": false,
+      "modules": ["face_dynamics", "eye_dynamics", "body_biomechanics", "hand_dynamics", "clothing_dynamics", "interaction_lock"]
+    },
+    "reference_coverage": {"character_a_face": "MISSING", "character_b_face": "MISSING"},
+    "identity": {
+      "character_id": "CHARACTER_A + CHARACTER_B",
+      "lock_block": "A：45岁银灰发；B：35岁深棕发；两人身份与服装全片各自独立，不互换。"
+    },
+    "interaction_lock": {
+      "relative_position": "A画面左，B画面右",
+      "gaze": "递杯时B看向杯，A看向B",
+      "distance": "约一臂距离",
+      "body_orientation": "A右肩朝向B，B正面偏左朝向A",
+      "hand_interaction": "A右手持杯把，B右手接杯把",
+      "object_ownership": "交接前A，交接后B",
+      "forbidden": ["face merge", "identity swap", "clothing swap", "body swap", "mirror copy"]
+    },
+    "hands": {
+      "finger_independence": true,
+      "grip": true,
+      "grip_pressure": true,
+      "object_contact": true,
+      "finger_object_collision": true,
+      "directives": ["A等B握住后才松手", "B接杯时杯把完整进入虎口"]
+    },
+    "temporal": {
+      "within_shot": true,
+      "identity_drift": false,
+      "facial_morphing": false
+    },
+    "anti_ai_rules": ["no face merge", "no identity swap", "no mirror copy", "no cup passing through hand"],
+    "score": {
+      "total": 86,
+      "identity": 18,
+      "eyes": 13,
+      "facial_dynamics": 13,
+      "skin": 8,
+      "hair": 9,
+      "body_biomechanics": 13,
+      "hands": 5,
+      "clothing": 4,
+      "temporal_consistency": 4,
+      "level": "COMMERCIAL REALISM"
+    }
+  },
+  "negative_constraints": ["no face merge", "no identity swap", "no extra person", "no cup floating"],
+  "output_mode": "ONE_SHOT_PROMPT",
+  "qa": {
+    "status": "READY",
+    "checks": {
+      "SPEC": "PASS",
+      "CHARACTER": "PASS",
+      "HUMAN_REALISM": "PASS",
+      "ACTION": "PASS"
+    },
+    "missing_modules": [],
+    "score": {
+      "clarity": 96,
+      "actionability": 96,
+      "continuity": 98,
+      "product_fidelity": 96,
+      "character_fidelity": 95,
+      "camera_executability": 95,
+      "audio_completeness": 90,
+      "temporal_coherence": 97
+    },
+    "notes": ["多人项目使用独立CHARACTER_ID与INTERACTION LOCK"]
+  }
+}

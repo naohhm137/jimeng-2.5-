@@ -1,0 +1,204 @@
+{
+  "project": {
+    "id": "fixture-v2-dialogue",
+    "title": "Human Realism Dialogue",
+    "duration_seconds": 8,
+    "aspect_ratio": "9:16",
+    "frame_rate": 30,
+    "platform": "seedance-2.5",
+    "language": "zh",
+    "output_mode": "ONE_SHOT_PROMPT",
+    "status": "DRAFT"
+  },
+  "input": {
+    "input_type": "AD_BRIEF",
+    "detected_task": "GENERATE",
+    "sources": [],
+    "raw_brief": "人物对镜头说固定台词，口型与呼吸要自然。"
+  },
+  "characters": [
+    {
+      "subject": "CHARACTER_A",
+      "subject_type": "CHARACTER",
+      "priority": 10,
+      "source_refs": [],
+      "fixed_attributes": ["同一张脸", "声音", "服装"],
+      "identity_lock": {
+        "character_id": "CHARACTER_A",
+        "age": "36岁",
+        "hair_style": "利落短发",
+        "hair_color": "黑色"
+      }
+    }
+  ],
+  "objective": {
+    "type": "STORY_AD",
+    "intent": "让人物说一句可信的话。",
+    "success_metrics": ["逐字台词", "口型自然", "不机械对口型"],
+    "platform_constraints": "竖屏，字幕后期另加"
+  },
+  "creative": {
+    "concept_name": "一句真话",
+    "structure": "8秒开场对镜说话",
+    "hook": {
+      "type": "SOUND_HOOK",
+      "description": "第一帧人物正在开口，首字已经启动。",
+      "start": 0,
+      "duration": 8
+    },
+    "product_integration": "无",
+    "visual_style": "克制访谈感",
+    "ending": "台词结束后嘴唇闭合延迟2帧"
+  },
+  "storyboard": [
+    {
+      "shot_id": "S01",
+      "start": 0,
+      "end": 8,
+      "duration_seconds": 8,
+      "first_frame_state": "人物面向镜头正在说出第一句话的第一个字",
+      "shot_size": "MEDIUM_CLOSE_UP",
+      "camera_position": "正面",
+      "camera_movement": "STATIC",
+      "camera_speed": "无",
+      "depth_of_field": "medium",
+      "focus": "人物双眼",
+      "subject_action": "逐字说出台词，中间有一次自然呼吸停顿",
+      "audio": {
+        "ambience": ["安静室内"],
+        "sfx": [],
+        "voice": ["CHARACTER_A"]
+      },
+      "transition": "NONE",
+      "feasibility": {
+        "action_load": "MEDIUM",
+        "camera_load": "LOW",
+        "notes": "说话时长足够",
+        "auto_split": false
+      }
+    }
+  ],
+  "camera": {
+    "default_shot_size": "MEDIUM_CLOSE_UP",
+    "default_movement": "STATIC",
+    "depth_of_field": "medium",
+    "focus": "人物双眼",
+    "trajectory": "固定",
+    "executability_rules": ["不频繁推拉"]
+  },
+  "lighting": {
+    "source": "窗边光",
+    "direction": "左侧",
+    "intensity": "柔和",
+    "color_temperature": "5400K"
+  },
+  "sound": {
+    "ambience": ["安静室内"],
+    "sfx": [],
+    "voice": ["CHARACTER_A"],
+    "dialogue": [
+      {
+        "speaker": "CHARACTER_A",
+        "start": 0.5,
+        "end": 6.5,
+        "tone": "自然平静",
+        "speed": "稍慢",
+        "text": "穿得轻松一点，日子也就松下来了。",
+        "repeat_count": 1
+      }
+    ],
+    "bgm": "NO BACKGROUND MUSIC"
+  },
+  "continuity": {
+    "character": "同脸同声",
+    "product": "N/A",
+    "scene": "同一背景",
+    "action": "台词只出现一次",
+    "camera": "固定"
+  },
+  "human_realism": {
+    "enabled": true,
+    "character_present": true,
+    "character_ids": ["CHARACTER_A"],
+    "shot_distance_routing": {
+      "shot_size": "MEDIUM_CLOSE_UP",
+      "priority_modules": ["face_dynamics", "eye_dynamics", "skin", "micro_expression", "identity"],
+      "reduced_modules": ["body_gait", "foot_placement"]
+    },
+    "routing": {
+      "face_visible": true,
+      "body_movement": false,
+      "hand_interaction": false,
+      "hair_movement": true,
+      "clothing_movement": false,
+      "dialogue": true,
+      "multi_shot": false,
+      "modules": ["face_dynamics", "eye_dynamics", "skin", "micro_expression", "hair_dynamics"]
+    },
+    "reference_coverage": {"face": "MISSING"},
+    "identity": {
+      "character_id": "CHARACTER_A",
+      "age": true,
+      "hair_style": true,
+      "hair_color": true,
+      "lock_block": "CHARACTER_A：36岁黑色利落短发自然脸。"
+    },
+    "facial_dynamics": {
+      "micro_expression": true,
+      "blinking": true,
+      "eye_movement": true,
+      "jaw_movement": true,
+      "lip_deformation": true,
+      "breathing": true,
+      "expression_transition": true,
+      "directives": ["口型先于首字", "长句呼吸停顿不闭眼", "尾音结束后嘴唇延迟闭合"]
+    },
+    "dialogue": {
+      "speaking_character": "CHARACTER_A",
+      "text_locked": true,
+      "dynamics": ["lip movement", "jaw movement", "breathing", "eye behavior", "micro-expression", "head micro-movement"]
+    },
+    "temporal": {
+      "within_shot": true,
+      "facial_morphing": false,
+      "expression_reset": false
+    },
+    "anti_ai_rules": ["no mechanical lip sync", "no frozen head", "no text rewrite"],
+    "score": {
+      "total": 91,
+      "identity": 19,
+      "eyes": 14,
+      "facial_dynamics": 15,
+      "skin": 9,
+      "hair": 9,
+      "body_biomechanics": 13,
+      "hands": 5,
+      "clothing": 2,
+      "temporal_consistency": 5,
+      "level": "CINEMA REALISM"
+    }
+  },
+  "negative_constraints": ["no mechanical lip sync", "no character swap", "no text rewrite"],
+  "output_mode": "ONE_SHOT_PROMPT",
+  "qa": {
+    "status": "READY",
+    "checks": {
+      "SPEC": "PASS",
+      "CHARACTER": "PASS",
+      "HUMAN_REALISM": "PASS",
+      "DIALOGUE": "PASS"
+    },
+    "missing_modules": [],
+    "score": {
+      "clarity": 98,
+      "actionability": 98,
+      "continuity": 98,
+      "product_fidelity": 100,
+      "character_fidelity": 97,
+      "camera_executability": 97,
+      "audio_completeness": 96,
+      "temporal_coherence": 98
+    },
+    "notes": ["台词逐字锁定，Human Realism只控制说话动态"]
+  }
+}

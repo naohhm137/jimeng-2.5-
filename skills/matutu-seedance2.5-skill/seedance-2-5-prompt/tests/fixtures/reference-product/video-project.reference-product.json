@@ -1,0 +1,208 @@
+{
+  "project": {
+    "id": "fixture-v3-reference-product",
+    "title": "Reference Product Lock",
+    "duration_seconds": 9,
+    "aspect_ratio": "9:16",
+    "frame_rate": 30,
+    "platform": "seedance-2.5",
+    "language": "zh",
+    "output_mode": "ONE_SHOT_PROMPT",
+    "status": "DRAFT"
+  },
+  "input": {
+    "input_type": "PRODUCT_IMAGE",
+    "detected_task": "GENERATE",
+    "sources": [
+      {
+        "asset_id": "@图片2",
+        "kind": "PRODUCT_IMAGE",
+        "role": "PRODUCT_IDENTITY",
+        "inherit": ["shape", "proportion", "material", "color"],
+        "do_not_inherit": ["background", "lighting", "tablecloth"]
+      }
+    ],
+    "raw_brief": "参考图锁同一款白色粗陶手作咖啡杯，桌面转盘展示杯身与杯把，不出现人物。"
+  },
+  "objective": {
+    "type": "PRODUCT_SHOWCASE",
+    "intent": "用同一只杯身完成完整转盘展示，证明杯型与杯把细节。",
+    "success_metrics": ["杯型不漂移", "釉面一致", "无第二只杯"],
+    "platform_constraints": "竖屏，无字幕"
+  },
+  "creative": {
+    "concept_name": "一只粗陶杯",
+    "structure": "9秒产品慢速转盘展示",
+    "hook": {
+      "type": "PRODUCT_HOOK",
+      "description": "第一帧杯把位于画面右侧且已开始缓慢转向。",
+      "start": 0,
+      "duration": 9
+    },
+    "product_integration": "产品自身完成全部展示",
+    "visual_style": "商业静物",
+    "ending": "杯把正对镜头后停住"
+  },
+  "product": {
+    "name": "白色粗陶手作咖啡杯",
+    "category": "餐具",
+    "appearance": "米白粗陶哑光釉",
+    "colors": ["米白"],
+    "materials": ["粗陶"],
+    "structure": "直身杯壁、单侧半圆杯把、圈足",
+    "dimensions": "高8cm，杯口直径8.5cm",
+    "logo": "无",
+    "text": "无",
+    "accessories": [],
+    "functions": ["盛装热饮"],
+    "key_selling_points": ["手作釉面", "厚实握感"],
+    "immutable_elements": ["杯型", "釉面纹理", "杯把弧度", "米白色"],
+    "transformation_allowed": false
+  },
+  "reference_intelligence": {
+    "version": "V3",
+    "reference_summary": "产品主图承担 PRODUCT_IDENTITY，背景与桌面不继承。",
+    "references": [
+      {
+        "reference_id": "@图片2",
+        "asset_kind": "IMAGE",
+        "role": "PRODUCT_IDENTITY",
+        "secondary_roles": ["PRODUCT_MATERIAL", "PRODUCT_DETAIL"],
+        "priority": 95,
+        "confidence": 0.95,
+        "lock_level": "HARD_LOCK",
+        "coverage": {
+          "PRODUCT_STRUCTURE": "HIGH",
+          "MATERIAL": "HIGH",
+          "LOGO": "N/A",
+          "PACKAGING": "N/A"
+        },
+        "subject": {
+          "subject_type": "PRODUCT",
+          "subject_label": "PRODUCT_01",
+          "count": 1
+        }
+      }
+    ],
+    "derived_locks": {
+      "product_lock": {
+        "identity": "白色粗陶手作咖啡杯",
+        "silhouette": "直身圆口单把杯",
+        "dimensions": "高8cm，杯口直径8.5cm",
+        "materials": ["粗陶"],
+        "colors": ["米白"],
+        "textures": "哑光粗粒釉面",
+        "logo": "无",
+        "typography": "无",
+        "controls": [],
+        "ports": [],
+        "accessories": [],
+        "packaging": "无",
+        "allowed_transformations": false
+      }
+    },
+    "rif_blocks": [
+      {
+        "block": "产品锁",
+        "role": "PRODUCT_IDENTITY",
+        "source_refs": ["@图片2"],
+        "content": "同一只白色粗陶杯，杯型与釉面锁定",
+        "lock": "HARD_LOCK",
+        "constraints": ["不改变杯型", "不改变釉色", "不出现第二只杯"]
+      }
+    ],
+    "conflicts": [],
+    "reference_qa": {
+      "status": "PASS",
+      "checks": {
+        "role_accuracy": "PASS",
+        "feature_extraction": "PASS",
+        "conflict_resolution": "NO_CONFLICT",
+        "lock_completeness": "PASS"
+      }
+    },
+    "reference_score": {
+      "role_accuracy": 20,
+      "feature_extraction": 20,
+      "priority_accuracy": 15,
+      "conflict_resolution": 15,
+      "lock_completeness": 15,
+      "prompt_mapping": 15,
+      "total": 100
+    }
+  },
+  "human_realism": {
+    "enabled": false,
+    "character_present": false,
+    "skip_reason": "NO_CHARACTER"
+  },
+  "storyboard": [
+    {
+      "shot_id": "S01",
+      "start": 0,
+      "end": 9,
+      "duration_seconds": 9,
+      "first_frame_state": "杯立在浅灰石台面，杯把朝右并开始缓慢左转",
+      "shot_size": "CLOSE_UP",
+      "camera_position": "桌面高度正面",
+      "camera_movement": "STATIC",
+      "camera_speed": "无",
+      "depth_of_field": "shallow",
+      "focus": "杯身釉面与杯把",
+      "subject_action": "杯缓慢旋转一圈后杯把正对镜头停住",
+      "audio": {
+        "ambience": ["室内低频"],
+        "sfx": [],
+        "voice": []
+      },
+      "transition": "NONE",
+      "feasibility": {
+        "action_load": "LOW",
+        "camera_load": "LOW",
+        "notes": "纯产品转盘，无人物",
+        "auto_split": false
+      }
+    }
+  ],
+  "camera": {
+    "default_shot_size": "CLOSE_UP",
+    "default_movement": "STATIC",
+    "depth_of_field": "shallow",
+    "focus": "杯身"
+  },
+  "lighting": {
+    "source": "顶部柔光箱",
+    "direction": "顶部偏左",
+    "intensity": "中等",
+    "color_temperature": "5600K",
+    "contrast": "低"
+  },
+  "sound": {
+    "ambience": ["室内低频"],
+    "sfx": [],
+    "voice": [],
+    "dialogue": [],
+    "bgm": "NO BACKGROUND MUSIC"
+  },
+  "continuity": {
+    "character": "N/A",
+    "product": "同一只杯",
+    "scene": "同一浅灰石台面",
+    "action": "旋转方向固定",
+    "camera": "固定机位"
+  },
+  "negative_constraints": ["no person", "no hand", "no second cup", "no product distortion"],
+  "output_mode": "ONE_SHOT_PROMPT",
+  "qa": {
+    "status": "READY",
+    "checks": {
+      "SPEC": "PASS",
+      "PRODUCT": "PASS",
+      "REFERENCE": "PASS",
+      "CHARACTER": "SKIP",
+      "HUMAN_REALISM": "SKIP"
+    },
+    "missing_modules": [],
+    "notes": ["Reference Product fixture 验证产品锁默认禁止变形"]
+  }
+}

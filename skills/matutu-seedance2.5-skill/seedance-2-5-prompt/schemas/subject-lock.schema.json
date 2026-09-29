@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/matutu-ai/seedance2.5-skill/schemas/subject-lock.schema.json",
+  "title": "Subject Lock",
+  "description": "Unified lock definition for product, character, scene, prop, logo, text, camera, and audio subjects.",
+  "type": "object",
+  "required": ["subject", "fixed_attributes"],
+  "properties": {
+    "subject": { "type": "string" },
+    "subject_type": {
+      "type": "string",
+      "enum": [
+        "PRODUCT",
+        "CHARACTER",
+        "SCENE",
+        "PROP",
+        "LOGO",
+        "TEXT",
+        "CAMERA",
+        "AUDIO"
+      ]
+    },
+    "priority": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10,
+      "description": "Higher value wins when reference assets conflict with locks."
+    },
+    "source_refs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Reference asset ids used to establish this lock."
+    },
+    "fixed_attributes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "allowed_changes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "forbidden_changes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "identity_lock": {
+      "type": "object",
+      "description": "Who this subject is. One stable identity fingerprint reused across every shot.",
+      "properties": {
+        "character_id": { "type": "string" },
+        "face_structure": { "type": "string" },
+        "facial_proportions": { "type": "string" },
+        "eye_shape": { "type": "string" },
+        "eyebrow_shape": { "type": "string" },
+        "nose_shape": { "type": "string" },
+        "lip_shape": { "type": "string" },
+        "jawline": { "type": "string" },
+        "cheekbone_structure": { "type": "string" },
+        "skin_tone": { "type": "string" },
+        "age": { "type": "string" },
+        "hair_style": { "type": "string" },
+        "hair_color": { "type": "string" },
+        "body_proportions": { "type": "string" },
+        "outfit": { "type": "string" },
+        "signature_features": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "reference_coverage": {
+      "type": "object",
+      "description": "Which reference view exists for this subject. Missing coverage is recorded instead of invented.",
+      "additionalProperties": {
+        "type": "string",
+        "enum": ["HIGH", "MEDIUM", "LOW", "MISSING", "N/A"]
+      }
+    },
+    "human_realism_lock": {
+      "type": "object",
+      "description": "How this subject behaves like a real human, separate from who they are.",
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "face_visible": { "type": "boolean" },
+        "body_visible": { "type": "boolean" },
+        "hands_visible": { "type": "boolean" },
+        "body_movement": { "type": "boolean" },
+        "dialogue": { "type": "boolean" },
+        "modules": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "motion_lock": {
+      "type": "object",
+      "description": "Minimum sufficient human dynamics compiled from the action, not quality adjectives.",
+      "properties": {
+        "action": { "type": "string" },
+        "dynamics": { "type": "array", "items": { "type": "string" } },
+        "forbidden_dynamics": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "temporal_lock": {
+      "type": "object",
+      "description": "Within-shot, cross-shot and sequence-state continuity rules for this subject.",
+      "properties": {
+        "within_shot": { "type": "array", "items": { "type": "string" } },
+        "cross_shot": { "type": "array", "items": { "type": "string" } },
+        "sequence_state": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

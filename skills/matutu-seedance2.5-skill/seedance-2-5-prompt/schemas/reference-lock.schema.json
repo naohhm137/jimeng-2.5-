@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/matutu-ai/seedance2.5-skill/schemas/reference-lock.schema.json",
+  "title": "Reference Lock",
+  "description": "Derived lock containers produced by Reference Intelligence before Prompt Compilation. Kept separate from final prompt prose.",
+  "type": "object",
+  "properties": {
+    "character_lock": {
+      "type": "object",
+      "properties": {
+        "identity": { "type": "string" },
+        "face": {
+          "type": "object",
+          "properties": {
+            "face_shape": { "type": "string" },
+            "facial_proportions": { "type": "string" },
+            "eyes": { "type": "string" },
+            "eyebrows": { "type": "string" },
+            "nose": { "type": "string" },
+            "lips": { "type": "string" },
+            "jawline": { "type": "string" },
+            "cheekbones": { "type": "string" }
+          },
+          "additionalProperties": true
+        },
+        "skin": { "type": "string" },
+        "hair": { "type": "string" },
+        "body": { "type": "string" },
+        "age_appearance": { "type": "string" },
+        "wardrobe": { "type": "string" },
+        "accessories": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "product_lock": {
+      "type": "object",
+      "properties": {
+        "identity": { "type": "string" },
+        "silhouette": { "type": "string" },
+        "dimensions": { "type": "string" },
+        "materials": { "type": "array", "items": { "type": "string" } },
+        "colors": { "type": "array", "items": { "type": "string" } },
+        "textures": { "type": "string" },
+        "logo": { "type": "string" },
+        "typography": { "type": "string" },
+        "controls": { "type": "array", "items": { "type": "string" } },
+        "ports": { "type": "array", "items": { "type": "string" } },
+        "accessories": { "type": "array", "items": { "type": "string" } },
+        "packaging": { "type": "string" },
+        "allowed_transformations": { "type": "boolean", "default": false }
+      },
+      "additionalProperties": true
+    },
+    "scene_lock": {
+      "type": "object",
+      "properties": {
+        "location": { "type": "string" },
+        "architecture": { "type": "string" },
+        "environment": { "type": "string" },
+        "objects": { "type": "array", "items": { "type": "string" } },
+        "materials": { "type": "array", "items": { "type": "string" } },
+        "depth": { "type": "string" },
+        "foreground": { "type": "string" },
+        "midground": { "type": "string" },
+        "background": { "type": "string" },
+        "lighting": { "type": "string" },
+        "atmosphere": { "type": "string" },
+        "color_palette": { "type": "string" },
+        "composition": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "camera_lock": {
+      "type": "object",
+      "properties": {
+        "shot_size": { "type": "string" },
+        "camera_height": { "type": "string" },
+        "camera_angle": { "type": "string" },
+        "lens": { "type": "string" },
+        "perspective": { "type": "string" },
+        "depth_of_field": { "type": "string" },
+        "focus": { "type": "string" },
+        "camera_motion": { "type": "string" },
+        "composition": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "motion_lock": {
+      "type": "object",
+      "properties": {
+        "subject_motion": { "type": "string" },
+        "body_mechanics": { "type": "string" },
+        "hand_motion": { "type": "string" },
+        "head_motion": { "type": "string" },
+        "eye_motion": { "type": "string" },
+        "hair_motion": { "type": "string" },
+        "clothing_motion": { "type": "string" },
+        "object_motion": { "type": "string" },
+        "camera_motion": { "type": "string" },
+        "speed": { "type": "string" },
+        "acceleration": { "type": "string" },
+        "deceleration": { "type": "string" },
+        "forbidden": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

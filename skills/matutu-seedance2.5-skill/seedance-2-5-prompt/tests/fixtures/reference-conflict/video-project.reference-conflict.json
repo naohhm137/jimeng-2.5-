@@ -1,0 +1,251 @@
+{
+  "project": {
+    "id": "fixture-v3-reference-conflict",
+    "title": "Reference Conflict Resolution",
+    "duration_seconds": 9,
+    "aspect_ratio": "9:16",
+    "frame_rate": 30,
+    "platform": "seedance-2.5",
+    "language": "zh",
+    "output_mode": "ONE_SHOT_PROMPT",
+    "status": "DRAFT"
+  },
+  "input": {
+    "input_type": "MIXED",
+    "detected_task": "GENERATE",
+    "sources": [
+      {
+        "asset_id": "@图片1",
+        "kind": "CHARACTER_IMAGE",
+        "role": "CHARACTER_IDENTITY",
+        "inherit": ["face", "body", "wardrobe"],
+        "do_not_inherit": ["background"]
+      },
+      {
+        "asset_id": "@图片2",
+        "kind": "CHARACTER_IMAGE",
+        "role": "CHARACTER_APPEARANCE",
+        "inherit": ["face", "wardrobe"],
+        "do_not_inherit": ["background", "lighting"]
+      }
+    ],
+    "raw_brief": "客户提供两张人物图，第一张暖米白亚麻套装，第二张深灰羊毛西装；需要按产品意图解决服装冲突。"
+  },
+  "objective": {
+    "type": "BRAND_AD",
+    "intent": "锁定人物身份，并按亚麻产品卖点统一服装。",
+    "success_metrics": ["身份来自同一人", "服装只保留胜出一套", "冲突有明确理由"],
+    "platform_constraints": "竖屏，无字幕"
+  },
+  "creative": {
+    "concept_name": "一套亚麻",
+    "structure": "9秒人物正面站立并轻微整理袖口",
+    "hook": {
+      "type": "VISUAL_HOOK",
+      "description": "第一帧人物已看向镜头，右手正整理左侧袖口。",
+      "start": 0,
+      "duration": 9
+    },
+    "product_integration": "亚麻面料承担材质展示",
+    "visual_style": "老钱松弛感",
+    "ending": "人物双手自然下垂，正面站定"
+  },
+  "characters": [
+    {
+      "subject": "CHARACTER_A",
+      "subject_type": "CHARACTER",
+      "priority": 10,
+      "source_refs": ["@图片1", "@图片2"],
+      "fixed_attributes": ["脸型", "发色", "体态"],
+      "identity_lock": {
+        "character_id": "CHARACTER_A",
+        "face_structure": "长脸高颧骨",
+        "age": "47岁",
+        "hair_style": "深棕侧分",
+        "hair_color": "深棕",
+        "body_proportions": "178cm中等",
+        "outfit": "暖米白天然亚麻套装"
+      }
+    }
+  ],
+  "reference_intelligence": {
+    "version": "V3",
+    "reference_summary": "两张人物图脸与服装证据冲突，以产品意图优先级裁决服装。",
+    "references": [
+      {
+        "reference_id": "@图片1",
+        "asset_kind": "IMAGE",
+        "role": "CHARACTER_IDENTITY",
+        "secondary_roles": ["WARDROBE", "POSE"],
+        "priority": 90,
+        "confidence": 0.9,
+        "lock_level": "HARD_LOCK",
+        "coverage": {
+          "FACE": "HIGH",
+          "FULL_BODY": "HIGH",
+          "CLOTHING": "HIGH"
+        },
+        "subject": {
+          "subject_type": "CHARACTER",
+          "subject_label": "CHARACTER_A",
+          "count": 1
+        }
+      },
+      {
+        "reference_id": "@图片2",
+        "asset_kind": "IMAGE",
+        "role": "CHARACTER_APPEARANCE",
+        "secondary_roles": ["WARDROBE"],
+        "priority": 60,
+        "confidence": 0.8,
+        "lock_level": "STYLE_REFERENCE",
+        "coverage": {
+          "FACE": "HIGH",
+          "FULL_BODY": "HIGH",
+          "CLOTHING": "HIGH"
+        },
+        "subject": {
+          "subject_type": "CHARACTER",
+          "subject_label": "CHARACTER_A",
+          "count": 1
+        }
+      }
+    ],
+    "derived_locks": {
+      "character_lock": {
+        "identity": "CHARACTER_A",
+        "face": {
+          "face_shape": "长脸",
+          "cheekbones": "高",
+          "jawline": "清晰"
+        },
+        "hair": "深棕侧分",
+        "body": "178cm中等",
+        "age_appearance": "47岁",
+        "wardrobe": "暖米白天然亚麻套装"
+      }
+    },
+    "rif_blocks": [
+      {
+        "block": "人物锁",
+        "role": "CHARACTER_IDENTITY",
+        "source_refs": ["@图片1", "@图片2"],
+        "content": "同一张脸与体态，服装采用暖米白亚麻套装",
+        "lock": "HARD_LOCK",
+        "constraints": ["不出现深灰羊毛西装"]
+      }
+    ],
+    "conflicts": [
+      {
+        "dimension": "WARDROBE",
+        "refs": ["@图片1", "@图片2"],
+        "winner": "@图片1",
+        "loser": "@图片2",
+        "reason": "本项目产品为亚麻套装，@图片1 服装与本片产品意图一致且为主图。",
+        "action": "保留暖米白亚麻套装；深灰羊毛只作为气质参考，不进入服装锁。",
+        "resolved": true
+      }
+    ],
+    "reference_qa": {
+      "status": "PASS",
+      "checks": {
+        "role_accuracy": "PASS",
+        "feature_extraction": "PASS",
+        "conflict_resolution": "PASS",
+        "lock_completeness": "PASS"
+      }
+    },
+    "reference_score": {
+      "role_accuracy": 20,
+      "feature_extraction": 20,
+      "priority_accuracy": 15,
+      "conflict_resolution": 15,
+      "lock_completeness": 15,
+      "prompt_mapping": 15,
+      "total": 100
+    }
+  },
+  "human_realism": {
+    "enabled": true,
+    "character_present": true,
+    "character_ids": ["CHARACTER_A"],
+    "routing": {
+      "face_visible": true,
+      "body_movement": true,
+      "hand_interaction": true,
+      "hair_movement": false,
+      "clothing_movement": true,
+      "dialogue": false,
+      "multi_shot": false,
+      "modules": ["face_dynamics", "eye_dynamics", "breathing", "body", "clothing_dynamics"]
+    }
+  },
+  "storyboard": [
+    {
+      "shot_id": "S01",
+      "start": 0,
+      "end": 9,
+      "duration_seconds": 9,
+      "first_frame_state": "人物正面面对镜头，右手正整理左侧袖口",
+      "shot_size": "MEDIUM",
+      "camera_position": "正面平视",
+      "camera_movement": "STATIC",
+      "camera_speed": "无",
+      "depth_of_field": "medium",
+      "focus": "人物面部与服装",
+      "subject_action": "完成袖口整理后双手自然放下，目光停留镜头",
+      "audio": {
+        "ambience": ["室内低频"],
+        "sfx": ["亚麻布料摩擦"],
+        "voice": []
+      },
+      "transition": "NONE",
+      "feasibility": {
+        "action_load": "LOW",
+        "camera_load": "LOW",
+        "notes": "单一动作，9秒内可完成",
+        "auto_split": false
+      }
+    }
+  ],
+  "camera": {
+    "default_shot_size": "MEDIUM",
+    "default_movement": "STATIC",
+    "depth_of_field": "medium",
+    "focus": "人物"
+  },
+  "lighting": {
+    "source": "柔光",
+    "direction": "画面左前",
+    "intensity": "中等",
+    "color_temperature": "5500K",
+    "contrast": "低"
+  },
+  "sound": {
+    "ambience": ["室内低频"],
+    "sfx": ["亚麻布料摩擦"],
+    "voice": [],
+    "dialogue": [],
+    "bgm": "NO BACKGROUND MUSIC"
+  },
+  "continuity": {
+    "character": "CHARACTER_A 不换脸",
+    "product": "暖米白亚麻套装不变",
+    "scene": "同一室内",
+    "action": "袖口整理只一次",
+    "camera": "固定机位"
+  },
+  "negative_constraints": ["no face morph", "no deep grey wool suit", "no cloth floating"],
+  "output_mode": "ONE_SHOT_PROMPT",
+  "qa": {
+    "status": "READY",
+    "checks": {
+      "SPEC": "PASS",
+      "CHARACTER": "PASS",
+      "REFERENCE_CONFLICT": "PASS",
+      "HUMAN_REALISM": "PASS"
+    },
+    "missing_modules": [],
+    "notes": ["Reference Conflict fixture 验证 wardrobe 冲突按产品意图裁决"]
+  }
+}

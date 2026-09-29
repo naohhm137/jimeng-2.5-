@@ -1,0 +1,316 @@
+{
+  "project": {
+    "id": "fixture-v3-reference-multi-image",
+    "title": "Reference Multi Image Role Extraction",
+    "duration_seconds": 10,
+    "aspect_ratio": "16:9",
+    "frame_rate": 30,
+    "platform": "seedance-2.5",
+    "language": "zh",
+    "output_mode": "ONE_SHOT_PROMPT",
+    "status": "DRAFT"
+  },
+  "input": {
+    "input_type": "MIXED",
+    "detected_task": "GENERATE",
+    "sources": [
+      {
+        "asset_id": "@图片1",
+        "kind": "CHARACTER_IMAGE",
+        "role": "CHARACTER_IDENTITY",
+        "inherit": ["face", "hair", "body"],
+        "do_not_inherit": ["background"]
+      },
+      {
+        "asset_id": "@图片2",
+        "kind": "PRODUCT_IMAGE",
+        "role": "PRODUCT_IDENTITY",
+        "inherit": ["silhouette", "material", "color"],
+        "do_not_inherit": ["background", "lighting"]
+      },
+      {
+        "asset_id": "@图片3",
+        "kind": "SCENE_IMAGE",
+        "role": "SCENE",
+        "inherit": ["architecture", "garden", "atmosphere"],
+        "do_not_inherit": ["character"]
+      }
+    ],
+    "raw_brief": "混合参考：同一人物穿着同一件亚麻衬衫，在老钱花园场景中自然行走。"
+  },
+  "objective": {
+    "type": "BRAND_AD",
+    "intent": "人物、服装、花园三者在同一镜头内保持一致。",
+    "success_metrics": ["三张参考不互相覆盖", "衬衫颜色不漂移", "空间关系稳定"],
+    "platform_constraints": "横屏，无字幕"
+  },
+  "creative": {
+    "concept_name": "花园一瞥",
+    "structure": "10秒人物沿花园石径行走",
+    "hook": {
+      "type": "ACTION_HOOK",
+      "description": "第一帧人物已进入画面右侧，脚步正在落地。",
+      "start": 0,
+      "duration": 10
+    },
+    "product_integration": "亚麻衬衫承担服装展示",
+    "visual_style": "老钱松弛感",
+    "ending": "人物走出画面左侧，衬衫下摆自然摆动"
+  },
+  "characters": [
+    {
+      "subject": "CHARACTER_A",
+      "subject_type": "CHARACTER",
+      "priority": 10,
+      "source_refs": ["@图片1"],
+      "fixed_attributes": ["同一张脸", "发色", "体型"],
+      "identity_lock": {
+        "character_id": "CHARACTER_A",
+        "face_structure": "方中带长",
+        "age": "48岁",
+        "hair_style": "灰白短发",
+        "hair_color": "灰白",
+        "body_proportions": "180cm中等",
+        "outfit": "天然亚麻衬衫"
+      }
+    }
+  ],
+  "product": {
+    "name": "天然亚麻衬衫",
+    "category": "服装",
+    "appearance": "暖米白宽松剪裁",
+    "colors": ["暖米白"],
+    "materials": ["天然亚麻"],
+    "structure": "直筒廓形、贝壳扣、小翻领",
+    "immutable_elements": ["廓形", "颜色", "领型"],
+    "transformation_allowed": false
+  },
+  "scene": {
+    "location": "老钱花园石径",
+    "layout": "右侧石径延伸至画面左后",
+    "time_of_day": "早晨",
+    "lighting": "柔和侧光",
+    "space_lock": "人物只沿石径行走，不进入花坛"
+  },
+  "reference_intelligence": {
+    "version": "V3",
+    "reference_summary": "三张素材分别承担人物、产品、场景主职责，证据互不越界。",
+    "references": [
+      {
+        "reference_id": "@图片1",
+        "asset_kind": "IMAGE",
+        "role": "CHARACTER_IDENTITY",
+        "secondary_roles": ["POSE"],
+        "priority": 85,
+        "confidence": 0.9,
+        "lock_level": "HARD_LOCK",
+        "coverage": {
+          "FACE": "HIGH",
+          "FULL_BODY": "HIGH",
+          "HANDS": "MEDIUM"
+        },
+        "subject": {
+          "subject_type": "CHARACTER",
+          "subject_label": "CHARACTER_A",
+          "count": 1
+        }
+      },
+      {
+        "reference_id": "@图片2",
+        "asset_kind": "IMAGE",
+        "role": "PRODUCT_IDENTITY",
+        "secondary_roles": ["PRODUCT_MATERIAL"],
+        "priority": 95,
+        "confidence": 0.95,
+        "lock_level": "HARD_LOCK",
+        "coverage": {
+          "PRODUCT_STRUCTURE": "HIGH",
+          "MATERIAL": "HIGH"
+        },
+        "subject": {
+          "subject_type": "PRODUCT",
+          "subject_label": "PRODUCT_01",
+          "count": 1
+        }
+      },
+      {
+        "reference_id": "@图片3",
+        "asset_kind": "IMAGE",
+        "role": "SCENE",
+        "secondary_roles": ["ENVIRONMENT", "LIGHTING"],
+        "priority": 75,
+        "confidence": 0.85,
+        "lock_level": "SOFT_LOCK",
+        "coverage": {
+          "ARCHITECTURE": "HIGH",
+          "ENVIRONMENT": "HIGH",
+          "LIGHTING": "MEDIUM"
+        },
+        "subject": {
+          "subject_type": "SCENE",
+          "subject_label": "SCENE_01",
+          "count": 1
+        }
+      }
+    ],
+    "derived_locks": {
+      "character_lock": {
+        "identity": "CHARACTER_A",
+        "face": {
+          "face_shape": "方中带长",
+          "jawline": "明确"
+        },
+        "hair": "灰白短发",
+        "body": "180cm中等",
+        "age_appearance": "48岁"
+      },
+      "product_lock": {
+        "identity": "天然亚麻衬衫",
+        "silhouette": "直筒宽松",
+        "materials": ["天然亚麻"],
+        "colors": ["暖米白"],
+        "textures": "细密麻织纹",
+        "allowed_transformations": false
+      },
+      "scene_lock": {
+        "location": "老钱花园石径",
+        "architecture": "低矮石墙与铸铁门",
+        "environment": "修剪灌木与花坛",
+        "objects": ["石径", "石墙", "铸铁门"],
+        "materials": ["砾石", "旧石砖"],
+        "lighting": "早晨柔和侧光",
+        "atmosphere": "安静松弛",
+        "color_palette": "灰绿与暖米白"
+      }
+    },
+    "rif_blocks": [
+      {
+        "block": "人物锁",
+        "role": "CHARACTER_IDENTITY",
+        "source_refs": ["@图片1"],
+        "content": "同一灰白短发中年男，脸部与体型不漂移",
+        "lock": "HARD_LOCK"
+      },
+      {
+        "block": "产品锁",
+        "role": "PRODUCT_IDENTITY",
+        "source_refs": ["@图片2"],
+        "content": "暖米白天然亚麻衬衫保持同一剪裁与颜色",
+        "lock": "HARD_LOCK",
+        "constraints": ["不得改变廓形与颜色"]
+      },
+      {
+        "block": "场景锁",
+        "role": "SCENE",
+        "source_refs": ["@图片3"],
+        "content": "石径、石墙与花园空间关系保持一致",
+        "lock": "SOFT_LOCK",
+        "constraints": ["人物不走进花坛"]
+      }
+    ],
+    "conflicts": [],
+    "reference_qa": {
+      "status": "PASS",
+      "checks": {
+        "role_accuracy": "PASS",
+        "feature_extraction": "PASS",
+        "conflict_resolution": "NO_CONFLICT",
+        "lock_completeness": "PASS"
+      }
+    },
+    "reference_score": {
+      "role_accuracy": 20,
+      "feature_extraction": 20,
+      "priority_accuracy": 15,
+      "conflict_resolution": 15,
+      "lock_completeness": 15,
+      "prompt_mapping": 15,
+      "total": 100
+    }
+  },
+  "human_realism": {
+    "enabled": true,
+    "character_present": true,
+    "character_ids": ["CHARACTER_A"],
+    "routing": {
+      "face_visible": true,
+      "body_movement": true,
+      "hand_interaction": false,
+      "hair_movement": false,
+      "clothing_movement": true,
+      "dialogue": false,
+      "multi_shot": false,
+      "modules": ["face_dynamics", "eye_dynamics", "breathing", "body", "clothing_dynamics"]
+    }
+  },
+  "storyboard": [
+    {
+      "shot_id": "S01",
+      "start": 0,
+      "end": 10,
+      "duration_seconds": 10,
+      "first_frame_state": "人物从右侧石径起步，左脚正在落地",
+      "shot_size": "FULL",
+      "camera_position": "石径侧面",
+      "camera_movement": "TRACK",
+      "camera_speed": "低速",
+      "depth_of_field": "medium",
+      "focus": "人物全身",
+      "subject_action": "沿石径自然行走并走出画面左侧",
+      "audio": {
+        "ambience": ["花园鸟鸣", "轻风"],
+        "sfx": ["砾石脚步"],
+        "voice": []
+      },
+      "transition": "NONE",
+      "feasibility": {
+        "action_load": "MEDIUM",
+        "camera_load": "MEDIUM",
+        "notes": "低速跟拍与自然行走匹配",
+        "auto_split": false
+      }
+    }
+  ],
+  "camera": {
+    "default_shot_size": "FULL",
+    "default_movement": "TRACK",
+    "depth_of_field": "medium",
+    "focus": "人物全身"
+  },
+  "lighting": {
+    "source": "晨光",
+    "direction": "画面右侧",
+    "intensity": "柔和",
+    "color_temperature": "5600K",
+    "contrast": "低"
+  },
+  "sound": {
+    "ambience": ["花园鸟鸣", "轻风"],
+    "sfx": ["砾石脚步"],
+    "voice": [],
+    "dialogue": [],
+    "bgm": "NO BACKGROUND MUSIC"
+  },
+  "continuity": {
+    "character": "CHARACTER_A 不换脸",
+    "product": "亚麻衬衫不变",
+    "scene": "同一花园石径",
+    "action": "只走一次，方向不跳变",
+    "camera": "侧向低速跟拍"
+  },
+  "negative_constraints": ["no face morph", "no shirt color shift", "no extra person", "no teleport"],
+  "output_mode": "ONE_SHOT_PROMPT",
+  "qa": {
+    "status": "READY",
+    "checks": {
+      "SPEC": "PASS",
+      "CHARACTER": "PASS",
+      "PRODUCT": "PASS",
+      "SCENE": "PASS",
+      "REFERENCE": "PASS",
+      "HUMAN_REALISM": "PASS"
+    },
+    "missing_modules": [],
+    "notes": ["Reference Multi Role fixture 覆盖三类角色共存与三份derived locks"]
+  }
+}

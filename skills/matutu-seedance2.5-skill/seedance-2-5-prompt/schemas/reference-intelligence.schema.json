@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/matutu-ai/seedance2.5-skill/schemas/reference-intelligence.schema.json",
+  "title": "Reference Intelligence Spec",
+  "description": "REFERENCE SPEC produced by the Reference Intelligence Engine and consumed by Product Analysis, Character Identity Lock, Human Realism and the Prompt Compiler.",
+  "type": "object",
+  "required": ["references"],
+  "properties": {
+    "reference_summary": { "type": "string" },
+    "version": { "type": "string", "const": "V3" },
+    "references": {
+      "type": "array",
+      "items": { "$ref": "reference-role.schema.json" },
+      "minItems": 1
+    },
+    "extracted_features": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["reference_id", "dimension", "value"],
+        "properties": {
+          "reference_id": { "type": "string" },
+          "dimension": { "type": "string" },
+          "value": { "type": "string" },
+          "coverage": {
+            "type": "string",
+            "enum": ["HIGH", "MEDIUM", "LOW", "MISSING", "N/A"]
+          },
+          "source": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "conflicts": {
+      "type": "array",
+      "items": { "$ref": "reference-conflict.schema.json" }
+    },
+    "derived_locks": { "$ref": "reference-lock.schema.json" },
+    "rif_blocks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "block": { "type": "string" },
+          "role": { "type": "string" },
+          "source_refs": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "content": { "type": "string" },
+          "lock": {
+            "type": "string",
+            "enum": ["HARD_LOCK", "SOFT_LOCK", "STYLE_REFERENCE", "INSPIRATION"]
+          },
+          "constraints": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "required": ["block", "role", "content"],
+        "additionalProperties": true
+      }
+    },
+    "reference_qa": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["PASS", "INCOMPLETE", "REPAIR"]
+        },
+        "checks": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        }
+      },
+      "additionalProperties": true
+    },
+    "reference_score": {
+      "type": "object",
+      "properties": {
+        "role_accuracy": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 20
+        },
+        "feature_extraction": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 20
+        },
+        "priority_accuracy": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 15
+        },
+        "conflict_resolution": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 15
+        },
+        "lock_completeness": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 15
+        },
+        "prompt_mapping": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 15
+        },
+        "total": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

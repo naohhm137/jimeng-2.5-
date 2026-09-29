@@ -1,0 +1,197 @@
+{
+  "project": {
+    "id": "fixture-v2-full-body",
+    "title": "Human Realism Full Body",
+    "duration_seconds": 6,
+    "aspect_ratio": "9:16",
+    "frame_rate": 30,
+    "platform": "seedance-2.5",
+    "language": "zh",
+    "output_mode": "ONE_SHOT_PROMPT",
+    "status": "DRAFT"
+  },
+  "input": {
+    "input_type": "AD_BRIEF",
+    "detected_task": "GENERATE",
+    "sources": [],
+    "raw_brief": "全身镜头，人物从站立自然转身向镜头。"
+  },
+  "characters": [
+    {
+      "subject": "CHARACTER_A",
+      "subject_type": "CHARACTER",
+      "priority": 10,
+      "source_refs": [],
+      "fixed_attributes": ["身高", "体型", "服装"],
+      "identity_lock": {
+        "character_id": "CHARACTER_A",
+        "age": "42岁",
+        "body_proportions": "178cm中等偏瘦"
+      }
+    }
+  ],
+  "objective": {
+    "type": "BRAND_AD",
+    "intent": "展示整身服装与身体比例。",
+    "success_metrics": ["转身真实", "头身比稳定", "服装不穿模"],
+    "platform_constraints": "竖屏"
+  },
+  "creative": {
+    "concept_name": "自然转身",
+    "structure": "6秒一次站立转身",
+    "hook": {
+      "type": "ACTION_HOOK",
+      "description": "第一帧人物肩膀已经开始转动。",
+      "start": 0,
+      "duration": 6
+    },
+    "product_integration": "服装随转身产生真实褶裥",
+    "visual_style": "老钱松弛感",
+    "ending": "人物正面站定，重心稳定"
+  },
+  "storyboard": [
+    {
+      "shot_id": "S01",
+      "start": 0,
+      "end": 6,
+      "duration_seconds": 6,
+      "first_frame_state": "人物侧对镜头，肩部正在向右转",
+      "shot_size": "FULL",
+      "camera_position": "正面偏左",
+      "camera_movement": "STATIC",
+      "camera_speed": "无",
+      "depth_of_field": "medium",
+      "focus": "人物全身",
+      "subject_action": "由侧身自然转正，重心从右脚移到左脚",
+      "audio": {
+        "ambience": ["户外轻风"],
+        "sfx": ["布料摩擦"],
+        "voice": []
+      },
+      "transition": "NONE",
+      "feasibility": {
+        "action_load": "MEDIUM",
+        "camera_load": "LOW",
+        "notes": "转身在6秒内可完成",
+        "auto_split": false
+      }
+    }
+  ],
+  "camera": {
+    "default_shot_size": "FULL",
+    "default_movement": "STATIC",
+    "depth_of_field": "medium",
+    "focus": "人物全身",
+    "trajectory": "固定机位",
+    "executability_rules": ["转身不超出画面边界"]
+  },
+  "lighting": {
+    "source": "晨光",
+    "direction": "画面右侧",
+    "intensity": "柔和",
+    "color_temperature": "5500K",
+    "contrast": "低"
+  },
+  "sound": {
+    "ambience": ["户外轻风"],
+    "sfx": ["布料摩擦"],
+    "voice": [],
+    "dialogue": [],
+    "bgm": "NO BACKGROUND MUSIC"
+  },
+  "continuity": {
+    "character": "全身比例不漂移",
+    "product": "服装不变",
+    "scene": "同一场地",
+    "action": "转身方向固定",
+    "camera": "固定机位"
+  },
+  "human_realism": {
+    "enabled": true,
+    "character_present": true,
+    "character_ids": ["CHARACTER_A"],
+    "shot_distance_routing": {
+      "shot_size": "FULL",
+      "priority_modules": ["body_biomechanics", "clothing_dynamics", "hair_dynamics", "head_stabilization"],
+      "reduced_modules": ["facial_pores", "micro_expression", "nostril"]
+    },
+    "routing": {
+      "face_visible": true,
+      "body_movement": true,
+      "hand_interaction": false,
+      "hair_movement": true,
+      "clothing_movement": true,
+      "dialogue": false,
+      "multi_shot": false,
+      "modules": ["body_biomechanics", "hair_dynamics", "clothing_dynamics"]
+    },
+    "reference_coverage": {"full_body": "MISSING", "face": "MISSING"},
+    "identity": {
+      "character_id": "CHARACTER_A",
+      "age": true,
+      "body_proportions": true,
+      "lock_block": "CHARACTER_A：178cm中等偏瘦，无参考时使用文字身份锚。"
+    },
+    "body": {
+      "center_of_mass": true,
+      "weight_transfer": true,
+      "posture_adjustment": true,
+      "head_stabilization": true,
+      "directives": ["眼睛先引导方向", "肩与骨盆先后转动", "头部最后完成稳定"]
+    },
+    "hair": {
+      "inertia": true,
+      "delayed_response": true,
+      "directives": ["转身停止后发丝延迟归位"]
+    },
+    "clothing": {
+      "fabric_inertia": true,
+      "gravity": true,
+      "fold_response": true,
+      "motion_response": true,
+      "directives": ["衣摆随转身先落后于身体", "静止后褶裥自然回弹"]
+    },
+    "temporal": {
+      "within_shot": true,
+      "body_drift": false,
+      "identity_drift": false
+    },
+    "anti_ai_rules": ["no identity drift", "no cloth floating", "no robotic turn", "no head-body desync"],
+    "score": {
+      "total": 85,
+      "identity": 17,
+      "eyes": 12,
+      "facial_dynamics": 12,
+      "skin": 8,
+      "hair": 9,
+      "body_biomechanics": 14,
+      "hands": 4,
+      "clothing": 5,
+      "temporal_consistency": 4,
+      "level": "COMMERCIAL REALISM"
+    }
+  },
+  "negative_constraints": ["no robotic turn", "no cloth floating", "no body drift"],
+  "output_mode": "ONE_SHOT_PROMPT",
+  "qa": {
+    "status": "READY",
+    "checks": {
+      "SPEC": "PASS",
+      "CHARACTER": "PASS",
+      "HUMAN_REALISM": "PASS",
+      "ACTION": "PASS"
+    },
+    "missing_modules": [],
+    "score": {
+      "clarity": 96,
+      "actionability": 96,
+      "continuity": 97,
+      "product_fidelity": 96,
+      "character_fidelity": 95,
+      "camera_executability": 96,
+      "audio_completeness": 92,
+      "temporal_coherence": 96
+    },
+    "notes": ["全身镜头加载body/clothing，不加载pores"]
+  }
+}

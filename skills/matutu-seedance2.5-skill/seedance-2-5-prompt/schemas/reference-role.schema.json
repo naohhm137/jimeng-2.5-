@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/matutu-ai/seedance2.5-skill/schemas/reference-role.schema.json",
+  "title": "Reference Role",
+  "description": "Canonical role and confidence/lock metadata for one uploaded reference asset. One primary role per asset; secondary roles carry auxiliary evidence only.",
+  "type": "object",
+  "required": ["reference_id", "role"],
+  "properties": {
+    "reference_id": { "type": "string" },
+    "asset_kind": {
+      "type": "string",
+      "enum": ["IMAGE", "VIDEO", "AUDIO", "TEXT"]
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "CHARACTER_IDENTITY",
+        "CHARACTER_APPEARANCE",
+        "WARDROBE",
+        "POSE",
+        "ACTION",
+        "PRODUCT_IDENTITY",
+        "PRODUCT_DETAIL",
+        "PRODUCT_MATERIAL",
+        "PRODUCT_USAGE",
+        "SCENE",
+        "ENVIRONMENT",
+        "ARCHITECTURE",
+        "COMPOSITION",
+        "CAMERA",
+        "LIGHTING",
+        "COLOR_PALETTE",
+        "VISUAL_STYLE",
+        "MOTION",
+        "CAMERA_MOTION",
+        "TIMING",
+        "AUDIO",
+        "OVERALL_STYLE"
+      ]
+    },
+    "secondary_roles": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "CHARACTER_IDENTITY",
+          "CHARACTER_APPEARANCE",
+          "WARDROBE",
+          "POSE",
+          "ACTION",
+          "PRODUCT_IDENTITY",
+          "PRODUCT_DETAIL",
+          "PRODUCT_MATERIAL",
+          "PRODUCT_USAGE",
+          "SCENE",
+          "ENVIRONMENT",
+          "ARCHITECTURE",
+          "COMPOSITION",
+          "CAMERA",
+          "LIGHTING",
+          "COLOR_PALETTE",
+          "VISUAL_STYLE",
+          "MOTION",
+          "CAMERA_MOTION",
+          "TIMING",
+          "AUDIO",
+          "OVERALL_STYLE"
+        ]
+      }
+    },
+    "priority": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Reference evidence priority. Do not confuse with subject-lock priority (1-10)."
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "lock_level": {
+      "type": "string",
+      "enum": ["HARD_LOCK", "SOFT_LOCK", "STYLE_REFERENCE", "INSPIRATION"]
+    },
+    "coverage": {
+      "type": "object",
+      "description": "Per-dimension visibility, e.g. FACE: HIGH, FULL_BODY: MISSING.",
+      "additionalProperties": {
+        "type": "string",
+        "enum": ["HIGH", "MEDIUM", "LOW", "MISSING", "N/A"]
+      }
+    },
+    "inherit": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "do_not_inherit": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "subject": {
+      "type": "object",
+      "properties": {
+        "subject_type": { "type": "string" },
+        "subject_label": { "type": "string" },
+        "count": { "type": "integer", "minimum": 1 }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,226 @@
+{
+  "project": {
+    "id": "fixture-v2-walking",
+    "title": "Human Realism Walking",
+    "duration_seconds": 6,
+    "aspect_ratio": "9:16",
+    "frame_rate": 30,
+    "platform": "seedance-2.5",
+    "language": "zh",
+    "output_mode": "ONE_SHOT_PROMPT",
+    "status": "DRAFT"
+  },
+  "input": {
+    "input_type": "AD_BRIEF",
+    "detected_task": "GENERATE",
+    "sources": [],
+    "raw_brief": "全身行走镜头，走路要自然松弛，不出现台步。"
+  },
+  "characters": [
+    {
+      "subject": "CHARACTER_A",
+      "subject_type": "CHARACTER",
+      "priority": 10,
+      "source_refs": [],
+      "fixed_attributes": ["身高", "体型", "服装", "鞋"],
+      "identity_lock": {
+        "character_id": "CHARACTER_A",
+        "age": "40岁",
+        "body_proportions": "180cm偏瘦挺拔",
+        "outfit": "米白色亚麻套装"
+      },
+      "human_realism_lock": {
+        "enabled": true,
+        "face_visible": false,
+        "body_visible": true,
+        "body_movement": true,
+        "dialogue": false,
+        "modules": ["body_biomechanics", "hair_dynamics", "clothing_dynamics"]
+      },
+      "motion_lock": {
+        "action": "WALK",
+        "dynamics": ["weight transfer", "foot placement", "gait", "pelvic movement", "arm swing", "shoulder counter-movement", "head stabilization", "hair inertia", "clothing delay"],
+        "forbidden_dynamics": ["runway stride", "stiff knees", "frozen head"]
+      }
+    }
+  ],
+  "objective": {
+    "type": "BRAND_AD",
+    "intent": "用松弛自然的行走状态传递老钱气质。",
+    "success_metrics": ["步态真实", "衣料惯性正确", "无台步"],
+    "platform_constraints": "竖屏，无字幕"
+  },
+  "creative": {
+    "concept_name": "松弛行走",
+    "structure": "6秒连续行走",
+    "hook": {
+      "type": "ACTION_HOOK",
+      "description": "第一帧人物已处于跨步动作中间。",
+      "start": 0,
+      "duration": 6
+    },
+    "product_integration": "服装跟随身体运动",
+    "visual_style": "自然纪实",
+    "ending": "人物走完最后一帧仍保持完整跨步姿态"
+  },
+  "storyboard": [
+    {
+      "shot_id": "S01",
+      "start": 0,
+      "end": 6,
+      "duration_seconds": 6,
+      "first_frame_state": "人物右腿正向前跨出，脚跟离地",
+      "shot_size": "FULL",
+      "camera_position": "侧面跟拍",
+      "camera_movement": "SIDE TRACK",
+      "camera_speed": "慢速",
+      "depth_of_field": "medium",
+      "focus": "人物全身",
+      "subject_action": "自然行走，重心连续转移",
+      "audio": {
+        "ambience": ["室外轻风"],
+        "sfx": ["草地脚步"],
+        "voice": []
+      },
+      "transition": "NONE",
+      "feasibility": {
+        "action_load": "MEDIUM",
+        "camera_load": "MEDIUM",
+        "notes": "跟拍速度与人物步速匹配",
+        "auto_split": false
+      }
+    }
+  ],
+  "camera": {
+    "default_shot_size": "FULL",
+    "default_movement": "SIDE TRACK",
+    "depth_of_field": "medium",
+    "focus": "人物全身",
+    "trajectory": "人物从左向右，跟拍保持同速",
+    "executability_rules": ["单一侧移", "相机不绕人物旋转"]
+  },
+  "lighting": {
+    "source": "清晨自然光",
+    "direction": "画面右侧",
+    "intensity": "柔和",
+    "color_temperature": "5500K",
+    "contrast": "低对比",
+    "shadows": "自然长影",
+    "ambient": "户外均匀"
+  },
+  "sound": {
+    "ambience": ["室外轻风"],
+    "sfx": ["草地脚步"],
+    "voice": [],
+    "dialogue": [],
+    "bgm": "NO BACKGROUND MUSIC"
+  },
+  "continuity": {
+    "character": "CHARACTER_A全片同一人物",
+    "product": "服装一致",
+    "scene": "同一草地路径",
+    "action": "行走方向固定从左到右",
+    "camera": "不反转"
+  },
+  "reference_analysis": {
+    "coverage": {"full_body": "LOW", "outfit": "MEDIUM"},
+    "roles": {},
+    "notes": ["无实拍图时使用文字占位身份锚"]
+  },
+  "human_realism": {
+    "enabled": true,
+    "character_present": true,
+    "character_ids": ["CHARACTER_A"],
+    "shot_distance_routing": {
+      "shot_size": "FULL",
+      "priority_modules": ["body_biomechanics", "weight", "feet", "gait", "hair_dynamics", "clothing_dynamics", "hands"],
+      "reduced_modules": ["facial_pores", "micro_expression", "nostril"]
+    },
+    "routing": {
+      "face_visible": false,
+      "body_movement": true,
+      "hand_interaction": false,
+      "hair_movement": true,
+      "clothing_movement": true,
+      "dialogue": false,
+      "multi_shot": false,
+      "modules": ["body_biomechanics", "hair_dynamics", "clothing_dynamics", "hands"]
+    },
+    "reference_coverage": {"full_body": "LOW", "outfit": "MEDIUM"},
+    "identity": {
+      "character_id": "CHARACTER_A",
+      "age": true,
+      "body_proportions": true,
+      "outfit": true,
+      "lock_block": "CHARACTER_A：180cm偏瘦挺拔，米白色亚麻套装。"
+    },
+    "body": {
+      "center_of_mass": true,
+      "weight_transfer": true,
+      "foot_placement": true,
+      "gait": true,
+      "heel_to_toe_motion": true,
+      "pelvic_movement": true,
+      "shoulder_counter_movement": true,
+      "arm_swing": true,
+      "head_stabilization": true,
+      "directives": ["脚跟先落地", "骨盆随步幅轻微跟随", "肩部反向摆动"]
+    },
+    "hair": {
+      "inertia": true,
+      "delayed_response": true,
+      "directives": ["发丝随跨步滞后摆动"]
+    },
+    "clothing": {
+      "fabric_inertia": true,
+      "gravity": true,
+      "motion_response": true,
+      "directives": ["衣摆相对身体延迟2-3帧"]
+    },
+    "temporal": {
+      "within_shot": true,
+      "cross_shot": false,
+      "sequence_state": false,
+      "body_drift": false,
+      "identity_drift": false
+    },
+    "anti_ai_rules": ["no runway walk", "no stiff knees", "no fabric floating", "no synchronized hair and clothing"],
+    "score": {
+      "total": 87,
+      "identity": 17,
+      "eyes": 12,
+      "facial_dynamics": 12,
+      "skin": 8,
+      "hair": 9,
+      "body_biomechanics": 14,
+      "hands": 4,
+      "clothing": 5,
+      "temporal_consistency": 5,
+      "level": "COMMERCIAL REALISM"
+    }
+  },
+  "negative_constraints": ["no runway stride", "no stiff knees", "no cloth floating", "no identity drift"],
+  "output_mode": "ONE_SHOT_PROMPT",
+  "qa": {
+    "status": "READY",
+    "checks": {
+      "SPEC": "PASS",
+      "CHARACTER": "PASS",
+      "HUMAN_REALISM": "PASS",
+      "ACTION": "PASS",
+      "CONTINUITY": "PASS"
+    },
+    "missing_modules": [],
+    "score": {
+      "clarity": 95,
+      "actionability": 96,
+      "continuity": 97,
+      "product_fidelity": 96,
+      "character_fidelity": 95,
+      "camera_executability": 95,
+      "audio_completeness": 92,
+      "temporal_coherence": 97
+    },
+    "notes": ["FULL景别加载步态与衣料惯性，未加载毛孔"]
+  }
+}

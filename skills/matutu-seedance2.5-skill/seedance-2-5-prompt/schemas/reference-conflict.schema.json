@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/matutu-ai/seedance2.5-skill/schemas/reference-conflict.schema.json",
+  "title": "Reference Conflict",
+  "description": "Detected conflicts between reference assets and the priority-based resolution decision.",
+  "type": "object",
+  "required": ["dimension", "winner", "resolved"],
+  "properties": {
+    "dimension": { "type": "string" },
+    "refs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 2
+    },
+    "winner": { "type": "string" },
+    "loser": { "type": "string" },
+    "reason": { "type": "string" },
+    "action": { "type": "string" },
+    "resolved": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}

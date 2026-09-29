@@ -1,0 +1,204 @@
+{
+  "project": {
+    "id": "fixture-v2-close-up",
+    "title": "Human Realism Close Up",
+    "duration_seconds": 6,
+    "aspect_ratio": "9:16",
+    "frame_rate": 30,
+    "platform": "seedance-2.5",
+    "language": "zh",
+    "output_mode": "ONE_SHOT_PROMPT",
+    "status": "DRAFT"
+  },
+  "input": {
+    "input_type": "CHARACTER_IMAGE",
+    "detected_task": "GENERATE",
+    "sources": [],
+    "raw_brief": "特写镜头，表情自然变化，皮肤真实，不做夸张表演。"
+  },
+  "characters": [
+    {
+      "subject": "CHARACTER_A",
+      "subject_type": "CHARACTER",
+      "priority": 10,
+      "source_refs": [],
+      "fixed_attributes": ["同一张脸", "五官比例"],
+      "identity_lock": {
+        "character_id": "CHARACTER_A",
+        "age": "38岁",
+        "hair_style": "短直发",
+        "signature_features": ["自然眉形"]
+      }
+    }
+  ],
+  "objective": {
+    "type": "VISUAL_HOOK",
+    "intent": "用特写中的皮肤与微表情制造情感真实感。",
+    "success_metrics": ["微表情自然", "皮肤不过度光滑", "身份不漂移"],
+    "platform_constraints": "竖屏"
+  },
+  "creative": {
+    "concept_name": "特写呼吸",
+    "structure": "6秒单一情绪渐变",
+    "hook": {
+      "type": "VISUAL_HOOK",
+      "description": "第一帧人物表情处于中性到轻微笑意的临界点。",
+      "start": 0,
+      "duration": 6
+    },
+    "product_integration": "无",
+    "visual_style": "安静真实",
+    "ending": "轻微笑意缓慢回落至中性"
+  },
+  "storyboard": [
+    {
+      "shot_id": "S01",
+      "start": 0,
+      "end": 6,
+      "duration_seconds": 6,
+      "first_frame_state": "中性表情开始出现轻微嘴角上扬",
+      "shot_size": "EXTREME_CLOSE_UP",
+      "camera_position": "正面偏右",
+      "camera_movement": "STATIC",
+      "camera_speed": "无",
+      "depth_of_field": "shallow",
+      "focus": "人物右眼",
+      "subject_action": "表情从中性过渡到轻微笑意再回落",
+      "audio": {
+        "ambience": ["安静"],
+        "sfx": [],
+        "voice": []
+      },
+      "transition": "NONE",
+      "feasibility": {
+        "action_load": "LOW",
+        "camera_load": "LOW",
+        "notes": "极特写不做身体动作",
+        "auto_split": false
+      }
+    }
+  ],
+  "camera": {
+    "default_shot_size": "EXTREME_CLOSE_UP",
+    "default_movement": "STATIC",
+    "depth_of_field": "shallow",
+    "focus": "人物右眼",
+    "trajectory": "固定",
+    "executability_rules": ["对焦不抖动", "不随意切景别"]
+  },
+  "lighting": {
+    "source": "柔光",
+    "direction": "正面",
+    "intensity": "柔和",
+    "color_temperature": "5500K",
+    "contrast": "低"
+  },
+  "sound": {
+    "ambience": ["安静"],
+    "sfx": [],
+    "voice": [],
+    "dialogue": [],
+    "bgm": "NO BACKGROUND MUSIC"
+  },
+  "continuity": {
+    "character": "同脸不漂移",
+    "product": "N/A",
+    "scene": "同一环境",
+    "action": "表情渐变不跳变",
+    "camera": "固定"
+  },
+  "human_realism": {
+    "enabled": true,
+    "character_present": true,
+    "character_ids": ["CHARACTER_A"],
+    "shot_distance_routing": {
+      "shot_size": "EXTREME_CLOSE_UP",
+      "priority_modules": ["eye_dynamics", "skin", "face_dynamics", "micro_expression", "identity"],
+      "reduced_modules": ["body_gait", "clothing_motion", "foot_placement"]
+    },
+    "routing": {
+      "face_visible": true,
+      "body_movement": false,
+      "hand_interaction": false,
+      "hair_movement": true,
+      "clothing_movement": false,
+      "dialogue": false,
+      "multi_shot": false,
+      "modules": ["face_dynamics", "eye_dynamics", "skin", "micro_expression", "hair_dynamics"]
+    },
+    "reference_coverage": {"face": "LOW"},
+    "identity": {
+      "character_id": "CHARACTER_A",
+      "face_structure": true,
+      "age": true,
+      "hair_style": true,
+      "lock_block": "CHARACTER_A：约38岁短直发自然脸，五官比例全程不变。"
+    },
+    "facial_dynamics": {
+      "blinking": true,
+      "micro_expression": true,
+      "eye_movement": true,
+      "lip_deformation": true,
+      "brow_movement": true,
+      "forehead_movement": true,
+      "expression_transition": true,
+      "directives": ["笑意先由嘴角出现", "肌肉放松后表情回落", "不做持续固定微笑"]
+    },
+    "eye_dynamics": {
+      "saccades": true,
+      "natural_blink": true,
+      "eyelid_deformation": true,
+      "directives": ["眨眼为非周期", "眼周有真实褶皱形变"]
+    },
+    "skin": {
+      "micro_texture": true,
+      "natural_tone_variation": true,
+      "skin_deformation": true,
+      "natural_specular_response": true,
+      "directives": ["保留自然毛孔与色差", "不用磨皮质感"]
+    },
+    "temporal": {
+      "within_shot": true,
+      "facial_morphing": false,
+      "texture_flicker": false,
+      "identity_drift": false
+    },
+    "anti_ai_rules": ["no plastic skin", "no frozen gaze", "no expression morph", "no texture flicker"],
+    "score": {
+      "total": 93,
+      "identity": 19,
+      "eyes": 15,
+      "facial_dynamics": 15,
+      "skin": 10,
+      "hair": 9,
+      "body_biomechanics": 13,
+      "hands": 5,
+      "clothing": 2,
+      "temporal_consistency": 5,
+      "level": "CINEMA REALISM"
+    }
+  },
+  "negative_constraints": ["no plastic skin", "no frozen gaze", "no identity morph", "no texture flicker"],
+  "output_mode": "ONE_SHOT_PROMPT",
+  "qa": {
+    "status": "READY",
+    "checks": {
+      "SPEC": "PASS",
+      "CHARACTER": "PASS",
+      "HUMAN_REALISM": "PASS",
+      "CONTINUITY": "PASS"
+    },
+    "missing_modules": [],
+    "score": {
+      "clarity": 98,
+      "actionability": 97,
+      "continuity": 98,
+      "product_fidelity": 100,
+      "character_fidelity": 97,
+      "camera_executability": 96,
+      "audio_completeness": 90,
+      "temporal_coherence": 98
+    },
+    "notes": ["EXTREME_CLOSE_UP只加载面部模块，无身体步态"]
+  }
+}

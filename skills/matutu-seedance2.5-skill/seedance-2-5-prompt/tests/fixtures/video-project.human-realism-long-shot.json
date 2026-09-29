@@ -1,0 +1,205 @@
+{
+  "project": {
+    "id": "fixture-v2-long-shot",
+    "title": "Human Realism Long Shot",
+    "duration_seconds": 8,
+    "aspect_ratio": "9:16",
+    "frame_rate": 30,
+    "platform": "seedance-2.5",
+    "language": "zh",
+    "output_mode": "ONE_SHOT_PROMPT",
+    "status": "DRAFT"
+  },
+  "input": {
+    "input_type": "AD_BRIEF",
+    "detected_task": "GENERATE",
+    "sources": [],
+    "raw_brief": "人物从庄园门口走向草地远景，镜头大景别只锁定人物运动轨迹与环境。"
+  },
+  "characters": [
+    {
+      "subject": "CHARACTER_A",
+      "subject_type": "CHARACTER",
+      "priority": 10,
+      "source_refs": [],
+      "fixed_attributes": ["身高", "发型", "服装颜色"],
+      "identity_lock": {
+        "character_id": "CHARACTER_A",
+        "age": "45岁",
+        "body_proportions": "180cm",
+        "outfit": "米白色亚麻套装"
+      }
+    }
+  ],
+  "objective": {
+    "type": "BRAND_AD",
+    "intent": "以远景建立老钱庄园生活场景。",
+    "success_metrics": ["轨迹清晰", "人物比例稳定", "环境真实"],
+    "platform_constraints": "竖屏"
+  },
+  "creative": {
+    "concept_name": "庄园远行",
+    "structure": "8秒一条远景轨迹",
+    "hook": {
+      "type": "ACTION_HOOK",
+      "description": "第一帧人物已处于画面右侧纵向行走的中间位置。",
+      "start": 0,
+      "duration": 8
+    },
+    "product_integration": "服装颜色成为远景辨识锚点",
+    "visual_style": "克制自然",
+    "ending": "人物走到草地深处，画面保持稳定"
+  },
+  "storyboard": [
+    {
+      "shot_id": "S01",
+      "start": 0,
+      "end": 8,
+      "duration_seconds": 8,
+      "first_frame_state": "人物正在画面纵向步道上行走，处于跨步中",
+      "shot_size": "WIDE",
+      "camera_position": "远距离正面",
+      "camera_movement": "STATIC",
+      "camera_speed": "无",
+      "depth_of_field": "deep",
+      "focus": "人物与路径",
+      "subject_action": "沿纵向步道稳定走向远处",
+      "audio": {
+        "ambience": ["草地风声", "鸟鸣"],
+        "sfx": [],
+        "voice": []
+      },
+      "transition": "NONE",
+      "feasibility": {
+        "action_load": "LOW",
+        "camera_load": "LOW",
+        "notes": "远景不加载面部细节",
+        "auto_split": false
+      }
+    }
+  ],
+  "camera": {
+    "default_shot_size": "WIDE",
+    "default_movement": "STATIC",
+    "depth_of_field": "deep",
+    "focus": "人物与路径",
+    "trajectory": "固定",
+    "executability_rules": ["人物轨迹不折返", "构图留出环境"]
+  },
+  "lighting": {
+    "source": "午后自然光",
+    "direction": "画面上方偏左",
+    "intensity": "明亮",
+    "color_temperature": "5400K",
+    "contrast": "中",
+    "shadows": "自然长影"
+  },
+  "sound": {
+    "ambience": ["草地风声", "鸟鸣"],
+    "sfx": [],
+    "voice": [],
+    "dialogue": [],
+    "bgm": "NO BACKGROUND MUSIC"
+  },
+  "continuity": {
+    "character": "远景保留头身比与服装颜色",
+    "product": "服装颜色不漂移",
+    "scene": "同一庄园草地",
+    "action": "行走方向固定",
+    "camera": "固定机位"
+  },
+  "reference_analysis": {
+    "coverage": {"full_body": "LOW", "face": "N/A"},
+    "roles": {},
+    "notes": ["远景面部参考不是必须"]
+  },
+  "human_realism": {
+    "enabled": true,
+    "character_present": true,
+    "character_ids": ["CHARACTER_A"],
+    "shot_distance_routing": {
+      "shot_size": "WIDE",
+      "priority_modules": ["body_trajectory", "environment", "camera"],
+      "reduced_modules": ["face_details", "micro_expression", "skin_pores", "fingers"]
+    },
+    "routing": {
+      "face_visible": false,
+      "body_movement": true,
+      "hand_interaction": false,
+      "hair_movement": false,
+      "clothing_movement": true,
+      "dialogue": false,
+      "multi_shot": false,
+      "modules": ["body_biomechanics", "clothing_dynamics", "environmental_realism"]
+    },
+    "reference_coverage": {"full_body": "LOW"},
+    "identity": {
+      "character_id": "CHARACTER_A",
+      "age": true,
+      "body_proportions": true,
+      "outfit": true,
+      "lock_block": "远景只保留CHARACTER_A头身比、银灰发色与米白色服装。"
+    },
+    "body": {
+      "center_of_mass": true,
+      "weight_transfer": true,
+      "gait": true,
+      "head_stabilization": true,
+      "directives": ["远景只呈现自然步幅与重心"]
+    },
+    "clothing": {
+      "fabric_inertia": true,
+      "gravity": true,
+      "motion_response": true,
+      "directives": ["服装颜色成为远景锚点，不漂移"]
+    },
+    "camera": {
+      "capture_language": "CINEMATIC",
+      "motion_behavior": true,
+      "depth_response": true,
+      "directives": ["固定远景，纵深真实"]
+    },
+    "temporal": {
+      "within_shot": true,
+      "identity_drift": false,
+      "body_drift": false
+    },
+    "anti_ai_rules": ["no face morph visible", "no color drift", "no trajectory jump"],
+    "score": {
+      "total": 84,
+      "identity": 17,
+      "eyes": 12,
+      "facial_dynamics": 12,
+      "skin": 8,
+      "hair": 9,
+      "body_biomechanics": 13,
+      "hands": 4,
+      "clothing": 5,
+      "temporal_consistency": 4,
+      "level": "COMMERCIAL REALISM"
+    }
+  },
+  "negative_constraints": ["no face morph", "no trajectory jump", "no color drift"],
+  "output_mode": "ONE_SHOT_PROMPT",
+  "qa": {
+    "status": "READY",
+    "checks": {
+      "SPEC": "PASS",
+      "CHARACTER": "PASS",
+      "HUMAN_REALISM": "PASS",
+      "SCENE": "PASS"
+    },
+    "missing_modules": [],
+    "score": {
+      "clarity": 96,
+      "actionability": 95,
+      "continuity": 97,
+      "product_fidelity": 96,
+      "character_fidelity": 94,
+      "camera_executability": 96,
+      "audio_completeness": 91,
+      "temporal_coherence": 96
+    },
+    "notes": ["WIDE只保留头身比/发色/服装，不写面部细节"]
+  }
+}

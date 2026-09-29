@@ -1,0 +1,239 @@
+{
+  "project": {
+    "id": "fixture-v2-talking-head",
+    "title": "Human Realism Talking Head",
+    "duration_seconds": 8,
+    "aspect_ratio": "9:16",
+    "frame_rate": 30,
+    "platform": "seedance-2.5",
+    "language": "zh",
+    "output_mode": "ONE_SHOT_PROMPT",
+    "status": "DRAFT"
+  },
+  "input": {
+    "input_type": "MIXED",
+    "detected_task": "GENERATE",
+    "sources": [
+      {
+        "asset_id": "@图片1",
+        "kind": "CHARACTER_IMAGE",
+        "role": "CHARACTER_IDENTITY",
+        "inherit": ["face", "hair", "skin tone"],
+        "do_not_inherit": ["background", "lighting"]
+      }
+    ],
+    "raw_brief": "正面说话人物胸像，8秒，锁同一张脸与自然口型。"
+  },
+  "characters": [
+    {
+      "subject": "CHARACTER_A",
+      "subject_type": "CHARACTER",
+      "priority": 10,
+      "source_refs": ["@图片1"],
+      "fixed_attributes": ["同一张脸", "发型", "发色", "服装"],
+      "identity_lock": {
+        "character_id": "CHARACTER_A",
+        "age": "35岁",
+        "hair_style": "自然偏分短发",
+        "hair_color": "深棕",
+        "signature_features": ["下颌线清晰", "无明显疤痕或纹身"]
+      },
+      "human_realism_lock": {
+        "enabled": true,
+        "face_visible": true,
+        "body_visible": false,
+        "body_movement": false,
+        "dialogue": true,
+        "modules": ["face_dynamics", "eye_dynamics", "skin", "micro_expression"]
+      }
+    }
+  ],
+  "objective": {
+    "type": "VISUAL_HOOK",
+    "intent": "用自然说话状态建立真实人物记忆点。",
+    "success_metrics": ["口型自然", "身份不漂移", "微表情合理"],
+    "platform_constraints": "9:16，无字幕，无BGM"
+  },
+  "creative": {
+    "concept_name": "真人说话感",
+    "structure": "0-8秒固定说话状态",
+    "hook": {
+      "type": "SOUND_HOOK",
+      "description": "第一帧人物已开口，嘴唇和下巴先于首个字完成启动。",
+      "start": 0,
+      "duration": 8
+    },
+    "product_integration": "无",
+    "visual_style": "克制人物特写",
+    "ending": "说完后嘴唇闭合延迟2帧，视线自然离开镜头"
+  },
+  "storyboard": [
+    {
+      "shot_id": "S01",
+      "start": 0,
+      "end": 8,
+      "duration_seconds": 8,
+      "first_frame_state": "人物正在开口说话，口型处于首字前启动",
+      "shot_size": "CLOSE_UP",
+      "camera_position": "正面偏左",
+      "camera_movement": "STATIC",
+      "camera_speed": "无",
+      "depth_of_field": "shallow",
+      "focus": "人物双眼与嘴唇",
+      "subject_action": "自然说话，有呼吸停顿与微小头部移动",
+      "audio": {
+        "ambience": ["室内低频环境音"],
+        "sfx": [],
+        "voice": ["同一把声音"]
+      },
+      "transition": "NONE",
+      "feasibility": {
+        "action_load": "LOW",
+        "camera_load": "LOW",
+        "notes": "单主体说话，不加载gait",
+        "auto_split": false
+      }
+    }
+  ],
+  "camera": {
+    "default_shot_size": "CLOSE_UP",
+    "default_movement": "STATIC",
+    "depth_of_field": "shallow",
+    "focus": "人物双眼",
+    "trajectory": "固定镜头",
+    "executability_rules": ["不用环绕", "对焦只做一次合理转移"]
+  },
+  "lighting": {
+    "source": "窗边自然光",
+    "direction": "画面右侧",
+    "intensity": "柔和",
+    "color_temperature": "5500K",
+    "contrast": "低对比",
+    "shadows": "真实柔和阴影",
+    "ambient": "均匀"
+  },
+  "sound": {
+    "ambience": ["室内低频环境音"],
+    "sfx": [],
+    "voice": ["同一把声音"],
+    "dialogue": [],
+    "bgm": "NO BACKGROUND MUSIC"
+  },
+  "continuity": {
+    "character": "CHARACTER_A同脸同发型同服装",
+    "product": "N/A",
+    "scene": "固定室内背景",
+    "action": "不做重复动作",
+    "camera": "镜头方向不反转"
+  },
+  "reference_analysis": {
+    "coverage": {"face": "HIGH", "full_body": "N/A"},
+    "roles": {"@图片1": "CHARACTER_IDENTITY"},
+    "notes": ["正脸参考存在，可锁身份"]
+  },
+  "human_realism": {
+    "enabled": true,
+    "character_present": true,
+    "character_ids": ["CHARACTER_A"],
+    "shot_distance_routing": {
+      "shot_size": "CLOSE_UP",
+      "priority_modules": ["face_dynamics", "eye_dynamics", "skin", "micro_expression", "identity"],
+      "reduced_modules": ["gait", "foot_placement", "pelvic_movement"]
+    },
+    "routing": {
+      "face_visible": true,
+      "body_movement": false,
+      "hand_interaction": false,
+      "hair_movement": true,
+      "clothing_movement": false,
+      "dialogue": true,
+      "multi_shot": false,
+      "modules": ["face_dynamics", "eye_dynamics", "skin", "hair_dynamics", "micro_expression"]
+    },
+    "reference_coverage": {"face": "HIGH", "hair": "MEDIUM", "clothing": "LOW"},
+    "identity": {
+      "character_id": "CHARACTER_A",
+      "face_structure": true,
+      "eye_shape": true,
+      "skin_tone": true,
+      "age": true,
+      "hair_style": true,
+      "hair_color": true,
+      "lock_block": "同一张35岁深棕偏分短发自然脸，全片不换人。"
+    },
+    "facial_dynamics": {
+      "blinking": true,
+      "micro_expression": true,
+      "eye_movement": true,
+      "jaw_movement": true,
+      "lip_deformation": true,
+      "breathing": true,
+      "expression_transition": true,
+      "directives": ["口型先于首字启动", "尾音后嘴唇延迟闭合", "长句呼吸停顿不闭眼"]
+    },
+    "skin": {
+      "micro_texture": true,
+      "natural_tone_variation": true,
+      "skin_deformation": true,
+      "directives": ["面部动作时皮肤随肌肉自然形变"]
+    },
+    "hair": {
+      "individual_strands": true,
+      "inertia": true,
+      "delayed_response": true,
+      "directives": ["头部微小移动时发丝滞后归位"]
+    },
+    "temporal": {
+      "within_shot": true,
+      "cross_shot": false,
+      "sequence_state": false,
+      "identity_drift": false,
+      "facial_morphing": false,
+      "expression_reset": false
+    },
+    "dialogue": {
+      "speaking_character": "CHARACTER_A",
+      "text_locked": true,
+      "dynamics": ["lip movement", "jaw movement", "breathing", "eye behavior", "micro-expression", "head micro-movement"]
+    },
+    "anti_ai_rules": ["no frozen gaze", "no robotic blinking", "no identity drift", "no facial morphing"],
+    "score": {
+      "total": 90,
+      "identity": 19,
+      "eyes": 14,
+      "facial_dynamics": 14,
+      "skin": 9,
+      "hair": 9,
+      "body_biomechanics": 13,
+      "hands": 5,
+      "clothing": 2,
+      "temporal_consistency": 5,
+      "level": "CINEMA REALISM"
+    }
+  },
+  "negative_constraints": ["no identity drift", "no robotic blinking", "no frozen gaze", "no plastic skin", "no extra character"],
+  "output_mode": "ONE_SHOT_PROMPT",
+  "qa": {
+    "status": "READY",
+    "checks": {
+      "SPEC": "PASS",
+      "PRODUCT": "N/A",
+      "CHARACTER": "PASS",
+      "HUMAN_REALISM": "PASS",
+      "DIALOGUE": "PASS",
+      "CONTINUITY": "PASS"
+    },
+    "missing_modules": [],
+    "score": {
+      "clarity": 95,
+      "actionability": 96,
+      "continuity": 97,
+      "product_fidelity": 100,
+      "character_fidelity": 96,
+      "camera_executability": 95,
+      "audio_completeness": 92,
+      "temporal_coherence": 97
+    },
+    "notes": ["CLOSE_UP未加载gait，最低充分模块正确"]
+  }
+}

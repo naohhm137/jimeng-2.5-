@@ -1,0 +1,216 @@
+{
+  "project": {
+    "id": "fixture-v2-static-portrait",
+    "title": "Human Realism Static Portrait",
+    "duration_seconds": 5,
+    "aspect_ratio": "9:16",
+    "frame_rate": 30,
+    "platform": "seedance-2.5",
+    "language": "zh",
+    "output_mode": "ONE_SHOT_PROMPT",
+    "status": "DRAFT"
+  },
+  "input": {
+    "input_type": "CHARACTER_IMAGE",
+    "detected_task": "GENERATE",
+    "sources": [
+      {
+        "asset_id": "@图片1",
+        "kind": "CHARACTER_IMAGE",
+        "role": "CHARACTER_IDENTITY",
+        "inherit": ["face", "hair", "skin"],
+        "do_not_inherit": ["background"]
+      }
+    ],
+    "raw_brief": "人物静态坐姿肖像，不走路，只需要呼吸与自然微表情。"
+  },
+  "characters": [
+    {
+      "subject": "CHARACTER_A",
+      "subject_type": "CHARACTER",
+      "priority": 10,
+      "source_refs": ["@图片1"],
+      "fixed_attributes": ["同一张脸", "发型", "发色", "服装"],
+      "identity_lock": {
+        "character_id": "CHARACTER_A",
+        "age": "45岁",
+        "hair_color": "银灰",
+        "body_proportions": "偏瘦挺拔"
+      },
+      "human_realism_lock": {
+        "enabled": true,
+        "face_visible": true,
+        "body_visible": true,
+        "body_movement": false,
+        "dialogue": false,
+        "modules": ["face_dynamics", "eye_dynamics", "skin", "breathing"]
+      }
+    }
+  ],
+  "objective": {
+    "type": "VISUAL_HOOK",
+    "intent": "用静止中的呼吸和眼神建立克制气质。",
+    "success_metrics": ["人物像活人而不是雕像", "无多余大动作"],
+    "platform_constraints": "竖屏，无字幕"
+  },
+  "creative": {
+    "concept_name": "呼吸的静止",
+    "structure": "5秒静态肖像",
+    "hook": {
+      "type": "VISUAL_HOOK",
+      "description": "第一帧人物刚完成一次轻微视线转移。",
+      "start": 0,
+      "duration": 5
+    },
+    "product_integration": "无",
+    "visual_style": "克制肖像",
+    "ending": "人物保持静止坐姿，呼吸自然可见"
+  },
+  "storyboard": [
+    {
+      "shot_id": "S01",
+      "start": 0,
+      "end": 5,
+      "duration_seconds": 5,
+      "first_frame_state": "人物完成视线转移，双眼落在镜头外某处",
+      "shot_size": "MEDIUM_CLOSE_UP",
+      "camera_position": "正面",
+      "camera_movement": "STATIC",
+      "camera_speed": "无",
+      "depth_of_field": "medium",
+      "focus": "人物双眼",
+      "subject_action": "自然呼吸与轻微眨眼，不做大动作",
+      "audio": {
+        "ambience": ["安静室内"],
+        "sfx": [],
+        "voice": []
+      },
+      "transition": "NONE",
+      "feasibility": {
+        "action_load": "LOW",
+        "camera_load": "LOW",
+        "notes": "静态肖像不加载gait",
+        "auto_split": false
+      }
+    }
+  ],
+  "camera": {
+    "default_shot_size": "MEDIUM_CLOSE_UP",
+    "default_movement": "STATIC",
+    "depth_of_field": "medium",
+    "focus": "人物双眼",
+    "trajectory": "固定",
+    "executability_rules": ["保持人物不跳变"]
+  },
+  "lighting": {
+    "source": "窗边自然光",
+    "direction": "画面左侧",
+    "intensity": "柔和",
+    "color_temperature": "5400K",
+    "contrast": "低",
+    "shadows": "柔和"
+  },
+  "sound": {
+    "ambience": ["安静室内"],
+    "sfx": [],
+    "voice": [],
+    "dialogue": [],
+    "bgm": "NO BACKGROUND MUSIC"
+  },
+  "continuity": {
+    "character": "同一张脸",
+    "product": "N/A",
+    "scene": "固定背景",
+    "action": "不重复动作",
+    "camera": "固定机位"
+  },
+  "reference_analysis": {
+    "coverage": {"face": "HIGH"},
+    "roles": {"@图片1": "CHARACTER_IDENTITY"},
+    "notes": []
+  },
+  "human_realism": {
+    "enabled": true,
+    "character_present": true,
+    "character_ids": ["CHARACTER_A"],
+    "shot_distance_routing": {
+      "shot_size": "MEDIUM_CLOSE_UP",
+      "priority_modules": ["face_dynamics", "eye_dynamics", "skin", "micro_expression", "identity"],
+      "reduced_modules": ["body_gait", "foot_placement", "pelvic_movement"]
+    },
+    "routing": {
+      "face_visible": true,
+      "body_movement": false,
+      "hand_interaction": false,
+      "hair_movement": true,
+      "clothing_movement": false,
+      "dialogue": false,
+      "multi_shot": false,
+      "modules": ["face_dynamics", "eye_dynamics", "skin", "micro_expression"]
+    },
+    "reference_coverage": {"face": "HIGH"},
+    "identity": {
+      "character_id": "CHARACTER_A",
+      "face_structure": true,
+      "age": true,
+      "hair_style": true,
+      "hair_color": true,
+      "lock_block": "CHARACTER_A：约45岁银灰发自然脸，全片不换人。"
+    },
+    "facial_dynamics": {
+      "blinking": true,
+      "micro_expression": true,
+      "eye_movement": true,
+      "breathing": true,
+      "expression_transition": true,
+      "directives": ["静止时肩膀随呼吸自然起伏", "微表情只出现一次并缓慢回落"]
+    },
+    "skin": {
+      "micro_texture": true,
+      "natural_specular_response": true,
+      "directives": ["皮肤有自然高光而非塑料感"]
+    },
+    "temporal": {
+      "within_shot": true,
+      "identity_drift": false,
+      "facial_morphing": false
+    },
+    "anti_ai_rules": ["no frozen gaze", "no statue stillness", "no identity drift"],
+    "score": {
+      "total": 89,
+      "identity": 18,
+      "eyes": 14,
+      "facial_dynamics": 14,
+      "skin": 9,
+      "hair": 8,
+      "body_biomechanics": 13,
+      "hands": 5,
+      "clothing": 3,
+      "temporal_consistency": 5,
+      "level": "COMMERCIAL REALISM"
+    }
+  },
+  "negative_constraints": ["no frozen statue", "no breathing absence", "no identity drift"],
+  "output_mode": "ONE_SHOT_PROMPT",
+  "qa": {
+    "status": "READY",
+    "checks": {
+      "SPEC": "PASS",
+      "CHARACTER": "PASS",
+      "HUMAN_REALISM": "PASS",
+      "CONTINUITY": "PASS"
+    },
+    "missing_modules": [],
+    "score": {
+      "clarity": 97,
+      "actionability": 97,
+      "continuity": 98,
+      "product_fidelity": 100,
+      "character_fidelity": 96,
+      "camera_executability": 97,
+      "audio_completeness": 90,
+      "temporal_coherence": 98
+    },
+    "notes": ["静态肖像未加载gait与pelvic motion"]
+  }
+}

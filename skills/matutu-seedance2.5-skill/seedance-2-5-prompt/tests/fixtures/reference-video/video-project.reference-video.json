@@ -1,0 +1,226 @@
+{
+  "project": {
+    "id": "fixture-v3-reference-video",
+    "title": "Reference Video Motion Lock",
+    "duration_seconds": 8,
+    "aspect_ratio": "16:9",
+    "frame_rate": 30,
+    "platform": "seedance-2.5",
+    "language": "zh",
+    "output_mode": "ONE_SHOT_PROMPT",
+    "status": "DRAFT"
+  },
+  "input": {
+    "input_type": "VIDEO_REFERENCE",
+    "detected_task": "GENERATE",
+    "sources": [
+      {
+        "asset_id": "@视频1",
+        "kind": "VIDEO_REFERENCE",
+        "role": "MOTION",
+        "inherit": ["步态", "节奏", "跟拍速度"],
+        "do_not_inherit": ["人物身份", "服装", "街道场景", "台词"]
+      }
+    ],
+    "raw_brief": "参考视频只学动作节奏与跟拍语言，人物、服装与场景全部替换为老钱亚麻广告。"
+  },
+  "objective": {
+    "type": "BRAND_AD",
+    "intent": "复刻松弛自然行走与低速侧向跟拍，不复制原片内容。",
+    "success_metrics": ["步态自然", "跟拍速度一致", "不继承原片人物"],
+    "platform_constraints": "横屏"
+  },
+  "creative": {
+    "concept_name": "街角一程",
+    "structure": "8秒一段侧向跟拍行走",
+    "hook": {
+      "type": "ACTION_HOOK",
+      "description": "第一帧人物右脚正落地，镜头保持同一跟拍速度。",
+      "start": 0,
+      "duration": 8
+    },
+    "product_integration": "行走中的亚麻服装随步伐自然摆动",
+    "visual_style": "自然纪实",
+    "ending": "人物走出画面右侧，镜头减速约0.5秒收尾"
+  },
+  "characters": [
+    {
+      "subject": "CHARACTER_A",
+      "subject_type": "CHARACTER",
+      "priority": 10,
+      "source_refs": [],
+      "fixed_attributes": ["年龄", "体型", "服装"],
+      "identity_lock": {
+        "character_id": "CHARACTER_A",
+        "age": "40-50岁",
+        "body_proportions": "中等",
+        "outfit": "暖米白色亚麻上衣"
+      }
+    }
+  ],
+  "reference_intelligence": {
+    "version": "V3",
+    "reference_summary": "参考视频只提取行走动作、摄影机运动与时间节奏，身份与场景全部隔离。",
+    "references": [
+      {
+        "reference_id": "@视频1",
+        "asset_kind": "VIDEO",
+        "role": "MOTION",
+        "secondary_roles": ["CAMERA_MOTION", "TIMING", "ACTION"],
+        "priority": 85,
+        "confidence": 0.88,
+        "lock_level": "SOFT_LOCK",
+        "coverage": {
+          "FULL_BODY": "HIGH",
+          "GAIT": "HIGH",
+          "CAMERA_RELATION": "HIGH",
+          "TIMING": "HIGH"
+        },
+        "subject": {
+          "subject_type": "CHARACTER",
+          "subject_label": "MOTION_SUBJECT_A",
+          "count": 1
+        }
+      }
+    ],
+    "derived_locks": {
+      "motion_lock": {
+        "subject_motion": "自然跨步行走，右脚落地后重心平滑前移",
+        "body_mechanics": "骨盆随跨步轻微旋转，肩部自然摆臂",
+        "head_motion": "头部轻微稳定修正，无刻意摆动",
+        "clothing_motion": "亚麻下摆随步伐延迟约2帧",
+        "speed": "低速，约每秒1.2步",
+        "camera_motion": "侧向低速跟拍",
+        "forbidden": ["台步", "定住摆拍", "匀速机械感"]
+      },
+      "camera_lock": {
+        "shot_size": "FULL",
+        "camera_height": "胸线高度",
+        "camera_angle": "平视",
+        "lens": "35mm",
+        "camera_motion": "TRACK",
+        "composition": "人物位于画面中央偏左，跟随人物同速移动"
+      }
+    },
+    "rif_blocks": [
+      {
+        "block": "时间轴",
+        "role": "TIMING",
+        "source_refs": ["@视频1"],
+        "content": "0-7.5秒恒定跟拍，7.5-8秒镜头减速收尾",
+        "lock": "SOFT_LOCK"
+      },
+      {
+        "block": "摄影",
+        "role": "CAMERA_MOTION",
+        "source_refs": ["@视频1"],
+        "content": "低速侧向跟拍，胸线高度平视",
+        "lock": "SOFT_LOCK",
+        "constraints": ["不复制原片人物与场景"]
+      }
+    ],
+    "conflicts": [],
+    "reference_qa": {
+      "status": "PASS",
+      "checks": {
+        "role_accuracy": "PASS",
+        "feature_extraction": "PASS",
+        "conflict_resolution": "NO_CONFLICT",
+        "lock_completeness": "PASS"
+      }
+    },
+    "reference_score": {
+      "role_accuracy": 20,
+      "feature_extraction": 20,
+      "priority_accuracy": 15,
+      "conflict_resolution": 15,
+      "lock_completeness": 15,
+      "prompt_mapping": 15,
+      "total": 100
+    }
+  },
+  "human_realism": {
+    "enabled": true,
+    "character_present": true,
+    "character_ids": ["CHARACTER_A"],
+    "routing": {
+      "face_visible": false,
+      "body_movement": true,
+      "hand_interaction": false,
+      "hair_movement": false,
+      "clothing_movement": true,
+      "dialogue": false,
+      "multi_shot": false,
+      "modules": ["body", "gait", "clothing_dynamics"]
+    }
+  },
+  "storyboard": [
+    {
+      "shot_id": "S01",
+      "start": 0,
+      "end": 8,
+      "duration_seconds": 8,
+      "first_frame_state": "人物在画面中央偏左处右脚落地",
+      "shot_size": "FULL",
+      "camera_position": "人物侧面",
+      "camera_movement": "TRACK",
+      "camera_speed": "低速",
+      "depth_of_field": "medium",
+      "focus": "人物全身",
+      "subject_action": "保持自然跨步行走，走出画面右侧",
+      "audio": {
+        "ambience": ["街道远景低频"],
+        "sfx": ["脚步声"],
+        "voice": []
+      },
+      "transition": "NONE",
+      "feasibility": {
+        "action_load": "MEDIUM",
+        "camera_load": "MEDIUM",
+        "notes": "行走与低速跟拍负载匹配",
+        "auto_split": false
+      }
+    }
+  ],
+  "camera": {
+    "default_shot_size": "FULL",
+    "default_movement": "TRACK",
+    "depth_of_field": "medium",
+    "focus": "人物全身"
+  },
+  "lighting": {
+    "source": "侧光",
+    "direction": "画面左侧",
+    "intensity": "柔和",
+    "color_temperature": "5400K",
+    "contrast": "低"
+  },
+  "sound": {
+    "ambience": ["街道远景低频"],
+    "sfx": ["脚步声"],
+    "voice": [],
+    "dialogue": [],
+    "bgm": "NO BACKGROUND MUSIC"
+  },
+  "continuity": {
+    "character": "人物身份由本项目图片锁决定",
+    "product": "暖米白色亚麻上衣",
+    "scene": "广告自建场景",
+    "action": "行走方向单一",
+    "camera": "同速跟拍"
+  },
+  "negative_constraints": ["no runway walk", "no original actor face", "no original scene copy", "no cloth floating"],
+  "output_mode": "ONE_SHOT_PROMPT",
+  "qa": {
+    "status": "READY",
+    "checks": {
+      "SPEC": "PASS",
+      "MOTION": "PASS",
+      "CAMERA": "PASS",
+      "REFERENCE": "PASS",
+      "HUMAN_REALISM": "PASS"
+    },
+    "missing_modules": [],
+    "notes": ["Reference Video fixture 验证动作视频只产出motion/camera/timing锁"]
+  }
+}

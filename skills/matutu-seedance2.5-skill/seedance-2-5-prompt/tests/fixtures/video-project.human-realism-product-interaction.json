@@ -1,0 +1,217 @@
+{
+  "project": {
+    "id": "fixture-v2-product-interaction",
+    "title": "Human Realism Product Interaction",
+    "duration_seconds": 8,
+    "aspect_ratio": "9:16",
+    "frame_rate": 30,
+    "platform": "seedance-2.5",
+    "language": "zh",
+    "output_mode": "ONE_SHOT_PROMPT",
+    "status": "DRAFT"
+  },
+  "input": {
+    "input_type": "PRODUCT_DATA",
+    "detected_task": "GENERATE",
+    "sources": [
+      {
+        "asset_id": "@图片1",
+        "kind": "PRODUCT_IMAGE",
+        "role": "PRODUCT_APPEARANCE",
+        "inherit": ["shape", "material", "color"],
+        "do_not_inherit": ["background", "lighting"]
+      }
+    ],
+    "raw_brief": "陶瓷马克杯手部拿起与放回特写，手必须像真实人手。"
+  },
+  "product": {
+    "name": "陶瓷马克杯",
+    "category": "餐具",
+    "appearance": "米白色哑光陶瓷",
+    "materials": ["陶瓷"],
+    "structure": "杯身、杯把",
+    "immutable_elements": ["杯身形状", "颜色", "杯把位置"],
+    "transformation_allowed": false
+  },
+  "characters": [
+    {
+      "subject": "CHARACTER_A",
+      "subject_type": "CHARACTER",
+      "priority": 5,
+      "source_refs": [],
+      "fixed_attributes": ["同一双手", "肤色一致"],
+      "human_realism_lock": {
+        "enabled": true,
+        "face_visible": false,
+        "body_visible": false,
+        "hands_visible": true,
+        "body_movement": false,
+        "dialogue": false,
+        "modules": ["hand_dynamics"]
+      },
+      "motion_lock": {
+        "action": "PICK_UP",
+        "dynamics": ["reach", "finger wrap", "thumb opposition", "wrist neutral", "object contact", "lift with center of mass"],
+        "forbidden_dynamics": ["floating fingers", "stiff wrist", "cup passing through hand"]
+      }
+    }
+  ],
+  "objective": {
+    "type": "PRODUCT_DEMO",
+    "intent": "真实展示杯把尺寸与抓握体验。",
+    "success_metrics": ["手部接触链完整", "杯不穿模", "无悬浮"],
+    "platform_constraints": "竖屏，无字幕"
+  },
+  "creative": {
+    "concept_name": "真实抓握",
+    "structure": "8秒一次完整拿起与放回",
+    "hook": {
+      "type": "PRODUCT_HOOK",
+      "description": "第一帧手指已接触到杯把并开始施力。",
+      "start": 0,
+      "duration": 8
+    },
+    "product_integration": "手部动作承担产品证明",
+    "visual_style": "安静特写",
+    "ending": "杯完整放回桌面，手指完全松开"
+  },
+  "storyboard": [
+    {
+      "shot_id": "S01",
+      "start": 0,
+      "end": 8,
+      "duration_seconds": 8,
+      "first_frame_state": "同一双手从右侧入画，食中二指已触杯把",
+      "shot_size": "CLOSE_UP",
+      "camera_position": "桌面高度正侧",
+      "camera_movement": "STATIC",
+      "camera_speed": "无",
+      "depth_of_field": "shallow",
+      "focus": "杯把与手指",
+      "subject_action": "拿起杯子至半空再放回，动作一次完成",
+      "audio": {
+        "ambience": ["室内低频"],
+        "sfx": ["陶瓷轻碰桌面"],
+        "voice": []
+      },
+      "transition": "NONE",
+      "feasibility": {
+        "action_load": "MEDIUM",
+        "camera_load": "LOW",
+        "notes": "接触链完整：触把-握紧-拿起-放回-松指",
+        "auto_split": false
+      }
+    }
+  ],
+  "camera": {
+    "default_shot_size": "CLOSE_UP",
+    "default_movement": "STATIC",
+    "depth_of_field": "shallow",
+    "focus": "杯把",
+    "trajectory": "固定",
+    "executability_rules": ["不旋转产品", "不换手"]
+  },
+  "lighting": {
+    "source": "柔光箱",
+    "direction": "顶部偏左",
+    "intensity": "中等",
+    "color_temperature": "5600K",
+    "contrast": "低",
+    "shadows": "柔和真实阴影"
+  },
+  "sound": {
+    "ambience": ["室内低频"],
+    "sfx": ["陶瓷轻碰桌面"],
+    "voice": [],
+    "dialogue": [],
+    "bgm": "NO BACKGROUND MUSIC"
+  },
+  "continuity": {
+    "character": "全片同一双手",
+    "product": "同一只马克杯",
+    "scene": "同一桌面",
+    "action": "放回后位置不漂移",
+    "camera": "固定机位"
+  },
+  "reference_analysis": {
+    "coverage": {"product": "HIGH", "hands": "MISSING"},
+    "roles": {"@图片1": "PRODUCT_APPEARANCE"},
+    "notes": ["手部没有参考，仅做动态约束"]
+  },
+  "human_realism": {
+    "enabled": true,
+    "character_present": true,
+    "character_ids": ["CHARACTER_A"],
+    "shot_distance_routing": {
+      "shot_size": "CLOSE_UP",
+      "priority_modules": ["hand_dynamics", "product", "object_contact"],
+      "reduced_modules": ["face_dynamics", "body_gait", "full_facial_motion"]
+    },
+    "routing": {
+      "face_visible": false,
+      "body_movement": false,
+      "hand_interaction": true,
+      "hair_movement": false,
+      "clothing_movement": false,
+      "dialogue": false,
+      "multi_shot": false,
+      "modules": ["hand_dynamics"]
+    },
+    "reference_coverage": {"product": "HIGH", "hands": "MISSING"},
+    "hands": {
+      "finger_independence": true,
+      "finger_flexion": true,
+      "thumb_opposition": true,
+      "wrist_rotation": true,
+      "knuckle_deformation": true,
+      "grip": true,
+      "grip_pressure": true,
+      "object_contact": true,
+      "finger_object_collision": true,
+      "directives": ["手指分开包住杯把", "拇指完成对握", "杯身不与手指穿模"]
+    },
+    "temporal": {
+      "within_shot": true,
+      "sequence_state": false,
+      "body_drift": false
+    },
+    "anti_ai_rules": ["no floating fingers", "no stiff wrist", "no cup passing through hand", "no extra hand"],
+    "score": {
+      "total": 82,
+      "identity": 16,
+      "eyes": 11,
+      "facial_dynamics": 11,
+      "skin": 8,
+      "hair": 8,
+      "body_biomechanics": 12,
+      "hands": 5,
+      "clothing": 4,
+      "temporal_consistency": 4,
+      "level": "COMMERCIAL REALISM"
+    }
+  },
+  "negative_constraints": ["no hand morphing", "no extra hand", "no floating cup", "no cup distortion"],
+  "output_mode": "ONE_SHOT_PROMPT",
+  "qa": {
+    "status": "READY",
+    "checks": {
+      "SPEC": "PASS",
+      "PRODUCT": "PASS",
+      "HUMAN_REALISM": "PASS",
+      "ACTION": "PASS",
+      "CONTINUITY": "PASS"
+    },
+    "missing_modules": [],
+    "score": {
+      "clarity": 94,
+      "actionability": 96,
+      "continuity": 96,
+      "product_fidelity": 97,
+      "character_fidelity": 95,
+      "camera_executability": 96,
+      "audio_completeness": 90,
+      "temporal_coherence": 96
+    },
+    "notes": ["产品近景只加载hand_dynamics，不加载完整面部动态"]
+  }
+}
