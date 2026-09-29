@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 820" role="img" aria-labelledby="title desc">
+  <title id="title">Seedance 2.5 skill workflow</title>
+  <desc id="desc">A six-stage workflow from production brief through mode selection, reference contracts, scene direction, prompt compilation, and linted delivery.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#090b13"/>
+      <stop offset="0.55" stop-color="#161126"/>
+      <stop offset="1" stop-color="#071722"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#a96bff"/>
+      <stop offset="0.5" stop-color="#6f8cff"/>
+      <stop offset="1" stop-color="#48d8ff"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7287b8"/>
+    </marker>
+    <style>
+      text{font-family:Arial,Helvetica,sans-serif}
+      .title{font-size:44px;font-weight:700;fill:#f5f1ff}
+      .sub{font-size:20px;font-weight:400;fill:#9ca8c9}
+      .step{font-size:15px;font-weight:700;letter-spacing:1.8px;fill:#b99cff}
+      .head{font-size:26px;font-weight:700;fill:#f8f7ff}
+      .body{font-size:17px;font-weight:400;fill:#aeb8d3}
+      .outhead{font-size:17px;font-weight:700;fill:#dcf8ff}
+      .outbody{font-size:15px;font-weight:400;fill:#93abc5}
+    </style>
+  </defs>
+  <rect width="1600" height="820" rx="36" fill="url(#bg)"/>
+  <circle cx="1280" cy="-20" r="390" fill="#244c7a" opacity="0.14"/>
+  <circle cx="250" cy="830" r="420" fill="#652aa8" opacity="0.13"/>
+  <text class="title" x="80" y="88">From intent to a production-ready prompt</text>
+  <text class="sub" x="80" y="126">One controlled pipeline for every Seedance 2.5 generation mode</text>
+
+  <path d="M244 303 H315 M505 303 H576 M766 303 H837 M1027 303 H1098 M1288 303 H1359" stroke="#7287b8" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <g transform="translate(54 194)">
+    <rect width="190" height="220" rx="24" fill="#131827" stroke="#3b4261" stroke-width="2"/>
+    <rect x="0" y="0" width="190" height="6" rx="3" fill="#a96bff"/>
+    <text class="step" x="22" y="42">STEP 01</text>
+    <text class="head" x="22" y="80">Brief</text>
+    <text class="body" x="22" y="116"><tspan x="22">Goal, surface,</tspan><tspan x="22" dy="26">duration, assets,</tspan><tspan x="22" dy="26">must-haves, rights</tspan></text>
+  </g>
+
+  <g transform="translate(315 194)">
+    <rect width="190" height="220" rx="24" fill="#131827" stroke="#3b4261" stroke-width="2"/>
+    <rect x="0" y="0" width="190" height="6" rx="3" fill="#976fff"/>
+    <text class="step" x="22" y="42">STEP 02</text>
+    <text class="head" x="22" y="80">Mode gate</text>
+    <text class="body" x="22" y="116"><tspan x="22">Generate, edit,</tspan><tspan x="22" dy="26">extend, keyframe,</tspan><tspan x="22" dy="26">storyboard, blockout</tspan></text>
+  </g>
+
+  <g transform="translate(576 194)">
+    <rect width="190" height="220" rx="24" fill="#131827" stroke="#3b4261" stroke-width="2"/>
+    <rect x="0" y="0" width="190" height="6" rx="3" fill="#7f7dff"/>
+    <text class="step" x="22" y="42">STEP 03</text>
+    <text class="head" x="22" y="80">Contracts</text>
+    <text class="body" x="22" y="116"><tspan x="22">One role per asset,</tspan><tspan x="22" dy="26">one authority per</tspan><tspan x="22" dy="26">dimension, exclusions</tspan></text>
+  </g>
+
+  <g transform="translate(837 194)">
+    <rect width="190" height="220" rx="24" fill="#131827" stroke="#3b4261" stroke-width="2"/>
+    <rect x="0" y="0" width="190" height="6" rx="3" fill="#6f96ff"/>
+    <text class="step" x="22" y="42">STEP 04</text>
+    <text class="head" x="22" y="80">Direct</text>
+    <text class="body" x="22" y="116"><tspan x="22">Visible event,</tspan><tspan x="22" dy="26">camera, light,</tspan><tspan x="22" dy="26">performance, sound</tspan></text>
+  </g>
+
+  <g transform="translate(1098 194)">
+    <rect width="190" height="220" rx="24" fill="#131827" stroke="#3b4261" stroke-width="2"/>
+    <rect x="0" y="0" width="190" height="6" rx="3" fill="#58baff"/>
+    <text class="step" x="22" y="42">STEP 05</text>
+    <text class="head" x="22" y="80">Compile</text>
+    <text class="body" x="22" y="116"><tspan x="22">Natural language,</tspan><tspan x="22" dy="26">stage endpoints,</tspan><tspan x="22" dy="26">continuity locks</tspan></text>
+  </g>
+
+  <g transform="translate(1359 194)">
+    <rect width="190" height="220" rx="24" fill="#131827" stroke="#3b4261" stroke-width="2"/>
+    <rect x="0" y="0" width="190" height="6" rx="3" fill="#48d8ff"/>
+    <text class="step" x="22" y="42">STEP 06</text>
+    <text class="head" x="22" y="80">Lint</text>
+    <text class="body" x="22" y="116"><tspan x="22">Check timing, roles,</tspan><tspan x="22" dy="26">edit scope, boundary,</tspan><tspan x="22" dy="26">audio conflicts</tspan></text>
+  </g>
+
+  <path d="M190 485 H1410" stroke="url(#accent)" stroke-width="4" opacity="0.75" filter="url(#glow)"/>
+  <circle cx="190" cy="485" r="8" fill="#a96bff"/><circle cx="597" cy="485" r="8" fill="#8180ff"/><circle cx="1003" cy="485" r="8" fill="#65a8ff"/><circle cx="1410" cy="485" r="8" fill="#48d8ff"/>
+
+  <text class="step" x="80" y="564">DELIVERY CONTRACT</text>
+  <g transform="translate(80 596)">
+    <rect width="330" height="128" rx="20" fill="#111b29" stroke="#31506c"/>
+    <text class="outhead" x="24" y="40">Task mode + settings</text>
+    <text class="outbody" x="24" y="71"><tspan x="24">Duration, ratio, resolution,</tspan><tspan x="24" dy="23">locked parameters, assumptions</tspan></text>
+  </g>
+  <g transform="translate(450 596)">
+    <rect width="330" height="128" rx="20" fill="#111b29" stroke="#31506c"/>
+    <text class="outhead" x="24" y="40">Reference role map</text>
+    <text class="outbody" x="24" y="71"><tspan x="24">Use / do not use for every</tspan><tspan x="24" dy="23">image, video, and audio asset</tspan></text>
+  </g>
+  <g transform="translate(820 596)">
+    <rect width="330" height="128" rx="20" fill="#111b29" stroke="#31506c"/>
+    <text class="outhead" x="24" y="40">Final prompt</text>
+    <text class="outbody" x="24" y="71"><tspan x="24">One copy-ready natural-language</tspan><tspan x="24" dy="23">prompt with exact reference tags</tspan></text>
+  </g>
+  <g transform="translate(1190 596)">
+    <rect width="330" height="128" rx="20" fill="#111b29" stroke="#31506c"/>
+    <text class="outhead" x="24" y="40">Risks + next step</text>
+    <text class="outbody" x="24" y="71"><tspan x="24">Only material conflicts, density,</tspan><tspan x="24" dy="23">or requirements that belong in post</tspan></text>
+  </g>
+</svg>

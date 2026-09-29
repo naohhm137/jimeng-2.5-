@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 860" role="img" aria-labelledby="title desc">
+  <title id="title">Seedance 2.5 reference role map</title>
+  <desc id="desc">Reference assets on the left are assigned to a single dimension authority in the center, which controls specific output dimensions on the right.</desc>
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#080b12"/>
+      <stop offset="0.5" stop-color="#151020"/>
+      <stop offset="1" stop-color="#071821"/>
+    </linearGradient>
+    <linearGradient id="hub" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8c55e8"/>
+      <stop offset="1" stop-color="#278fc2"/>
+    </linearGradient>
+    <marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#657da5"/>
+    </marker>
+    <style>
+      text{font-family:Arial,Helvetica,sans-serif}
+      .title{font-size:44px;font-weight:700;fill:#f5f2ff}
+      .sub{font-size:20px;font-weight:400;fill:#9faac7}
+      .col{font-size:15px;font-weight:700;letter-spacing:2px;fill:#8fa6c4}
+      .cardhead{font-size:22px;font-weight:700;fill:#f8f8ff}
+      .cardbody{font-size:15px;font-weight:400;fill:#aeb8d3}
+      .hubhead{font-size:27px;font-weight:700;fill:#ffffff}
+      .hubbody{font-size:16px;font-weight:500;fill:#edf6ff}
+      .rule{font-size:18px;font-weight:600;fill:#d9e9ff}
+      .rulebody{font-size:15px;font-weight:400;fill:#9eb0cb}
+    </style>
+  </defs>
+  <rect width="1600" height="860" rx="36" fill="url(#bg2)"/>
+  <circle cx="840" cy="430" r="330" fill="#6830a8" opacity="0.08"/>
+  <text class="title" x="74" y="84">Reference assets are contracts, not inspiration piles</text>
+  <text class="sub" x="74" y="122">Assign one controlling source per output dimension, then state every exclusion</text>
+
+  <text class="col" x="84" y="178">REFERENCE ASSETS</text>
+  <text class="col" x="654" y="178">AUTHORITY</text>
+  <text class="col" x="1150" y="178">OUTPUT DIMENSIONS</text>
+
+  <g transform="translate(74 204)">
+    <rect width="352" height="92" rx="18" fill="#171526" stroke="#6d4c9d"/>
+    <circle cx="45" cy="46" r="20" fill="#a76cff" opacity="0.22"/><path d="M32 54l10-12 9 8 8-10 12 14z" fill="#c5a8ff"/>
+    <text class="cardhead" x="82" y="38">Image references</text><text class="cardbody" x="82" y="64">Identity · wardrobe · product · environment</text>
+  </g>
+  <g transform="translate(74 316)">
+    <rect width="352" height="92" rx="18" fill="#151925" stroke="#4b638f"/>
+    <circle cx="45" cy="46" r="20" fill="#668cff" opacity="0.22"/><path d="M38 34l18 12-18 12z" fill="#9cb7ff"/>
+    <text class="cardhead" x="82" y="38">Video references</text><text class="cardbody" x="82" y="64">Motion · blocking · camera · pacing</text>
+  </g>
+  <g transform="translate(74 428)">
+    <rect width="352" height="92" rx="18" fill="#121c25" stroke="#3f7185"/>
+    <circle cx="45" cy="46" r="20" fill="#48d8ff" opacity="0.18"/><path d="M28 46h5l4-12 6 24 6-18 5 12 5-6h5" fill="none" stroke="#81e6ff" stroke-width="3"/>
+    <text class="cardhead" x="82" y="38">Audio references</text><text class="cardbody" x="82" y="64">Voice · dialogue · ambience · music</text>
+  </g>
+  <g transform="translate(74 540)">
+    <rect width="352" height="92" rx="18" fill="#171825" stroke="#67567e"/>
+    <circle cx="45" cy="46" r="20" fill="#b07ad4" opacity="0.18"/><path d="M31 39h28M31 46h20M31 53h25" stroke="#d1a8ec" stroke-width="3"/>
+    <text class="cardhead" x="82" y="38">Source video</text><text class="cardbody" x="82" y="64">Edit master · boundary truth · event order</text>
+  </g>
+  <g transform="translate(74 652)">
+    <rect width="352" height="92" rx="18" fill="#171824" stroke="#7e6549"/>
+    <circle cx="45" cy="46" r="20" fill="#f2a750" opacity="0.18"/><path d="M30 46h30M34 38v16M45 34v24M56 40v12" stroke="#ffc777" stroke-width="3"/>
+    <text class="cardhead" x="82" y="38">Endpoint / keyframes</text><text class="cardbody" x="82" y="64">Opening state · stage states · final target</text>
+  </g>
+
+  <path d="M426 250 C535 250 535 365 650 365 M426 362 C535 362 535 385 650 385 M426 474 C535 474 535 405 650 405 M426 586 C535 586 535 425 650 425 M426 698 C535 698 535 445 650 445" fill="none" stroke="#657da5" stroke-width="2.5" marker-end="url(#arrow2)" opacity="0.8"/>
+
+  <g transform="translate(650 282)">
+    <rect width="330" height="250" rx="38" fill="url(#hub)" opacity="0.94"/>
+    <text class="hubhead" x="165" y="61" text-anchor="middle">Dimension authority</text>
+    <text class="hubbody" x="165" y="104" text-anchor="middle"><tspan x="165">Choose one winner for every</tspan><tspan x="165" dy="26">controlled dimension.</tspan></text>
+    <path d="M66 159h198" stroke="#e7f3ff" stroke-width="1.5" opacity="0.45"/>
+    <text class="hubbody" x="165" y="190" text-anchor="middle"><tspan x="165">One asset may own several</tspan><tspan x="165" dy="26">compatible dimensions.</tspan></text>
+  </g>
+
+  <path d="M980 336 C1050 336 1050 250 1135 250 M980 365 C1050 365 1050 340 1135 340 M980 394 C1050 394 1050 430 1135 430 M980 423 C1050 423 1050 520 1135 520 M980 452 C1050 452 1050 610 1135 610 M980 481 C1050 481 1050 700 1135 700" fill="none" stroke="#657da5" stroke-width="2.5" marker-end="url(#arrow2)" opacity="0.8"/>
+
+  <g transform="translate(1135 206)"><rect width="390" height="88" rx="18" fill="#111a27" stroke="#594677"/><text class="cardhead" x="24" y="37">Identity + wardrobe</text><text class="cardbody" x="24" y="62">Face, hair, clothing, subject count</text></g>
+  <g transform="translate(1135 306)"><rect width="390" height="88" rx="18" fill="#111a27" stroke="#4f557d"/><text class="cardhead" x="24" y="37">Geometry + environment</text><text class="cardbody" x="24" y="62">Product structure, props, spatial layout</text></g>
+  <g transform="translate(1135 406)"><rect width="390" height="88" rx="18" fill="#111a27" stroke="#446485"/><text class="cardhead" x="24" y="37">Motion + blocking</text><text class="cardbody" x="24" y="62">Path, timing, ownership, occlusion</text></g>
+  <g transform="translate(1135 506)"><rect width="390" height="88" rx="18" fill="#111a27" stroke="#3c7083"/><text class="cardhead" x="24" y="37">Camera + edit rhythm</text><text class="cardbody" x="24" y="62">Position, vector, cuts, movement phase</text></g>
+  <g transform="translate(1135 606)"><rect width="390" height="88" rx="18" fill="#111a27" stroke="#347a87"/><text class="cardhead" x="24" y="37">Audio</text><text class="cardbody" x="24" y="62">Voice, dialogue, ambience, music, phase</text></g>
+  <g transform="translate(1135 706)"><rect width="390" height="88" rx="18" fill="#111a27" stroke="#8a6946"/><text class="cardhead" x="24" y="37">Endpoint + continuity</text><text class="cardbody" x="24" y="62">Observed boundary, stage end, final target</text></g>
+
+  <g transform="translate(478 644)">
+    <rect width="590" height="112" rx="24" fill="#111520" stroke="#3d4962"/>
+    <text class="rule" x="28" y="36">Three non-negotiable rules</text>
+    <text class="rulebody" x="28" y="66"><tspan x="28">1. Preserve exact reference tokens.</tspan><tspan x="270">2. State explicit exclusions.</tspan></text>
+    <text class="rulebody" x="28" y="91">3. Remove every asset that controls nothing.</text>
+  </g>
+</svg>
